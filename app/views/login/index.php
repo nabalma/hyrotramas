@@ -19,16 +19,16 @@
 
             <hr>
 
-             <?php if(isset($_SESSION["loginerror"]) && $_SESSION["loginerror"]!=""){$this->view("login/login_error");}  ?>
+            <?php if(isset( $_SESSION["login_error"]) &&  $_SESSION["login_error"]!=""){$this->view("login/login_error");}  ?>
            
 
             <div class="mb-1 form-floating me-2 text-dark">
-                <input name = "email" type="email " class="col form-control " id="floatingInput " placeholder="name@example.com " required>
+                <input name = "email" type="email " class="col form-control " id="floatingInput " placeholder="name@example.com ">
                 <label for="floatingInput">Email address</label>
             </div>
 
             <div class="mb-1 form-floating me-2 text-dark">
-                <input name = "password" type="password" class="form-control " id="floatingPassword " placeholder="Password " minlength="8" maxlength="12" required>
+                <input name = "password" type="password" class="form-control " id="floatingPassword " placeholder="Password " minlength="8" maxlength="12">
                 <label for="floatingPassword ">Password</label>
             </div>
 

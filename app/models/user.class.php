@@ -154,6 +154,8 @@ class User {
                if(empty($email)){
                    $this->loginerror.=" - Vous devez indiquer une adresse email ! <br> ";
                };
+
+              
               
              //   1.4 -- Validation du mot de passe non vide
         
@@ -162,76 +164,80 @@ class User {
                 };
         
             //    1.5 -- Verification de lexistance du compte(Verification dans la base de données)
-        
-                  // 1.5-1 -- before saving the user, check if the email is  in the database
-                  $query="SELECT * FROM users WHERE email =:email";
-                  $data["email"]=$email;
-                  $check=$db->read($query,$data);
-        
-                  // 1.5-1-1 -- If the user is not in the db
-                  if(count($check)==0){
-                    $this->loginerror.="Oups, Courriel et/ou Mot de passe incorrecte (s). Merci de réessayer ! <br>";
-                  } 
-                  // 1.5-1-2 -- If the user is in the db
-                  else{
-                    $db_hashed_pass=$check[0]["motdepasse"];
-        
-                    // 1.5-1-2-1 -- If the password matches
-                    if (password_verify($password, $db_hashed_pass)) {
-                     $_SESSION["connectedUser"]=$check;
+
+            if($this->loginerror==""){
+
+               // 1.5-1 -- before saving the user, check if the email is  in the database
+               $query="SELECT * FROM users WHERE email =:email";
+               $data["email"]=$email;
+               $check=$db->read($query,$data);
+     
+               // 1.5-1-1 -- If the user is not in the db
+               if(count($check)==0){
+                 $this->loginerror.="Oups, Courriel et/ou Mot de passe incorrecte (s). Merci de réessayer ! <br>";
+               } 
+               // 1.5-1-2 -- If the user is in the db
+               else{
+                 $db_hashed_pass=$check[0]["motdepasse"];
+     
+                 // 1.5-1-2-1 -- If the password matches
+                 if (password_verify($password, $db_hashed_pass)) {
+                  $_SESSION["connectedUser"]=$check[0];
+
+                  //Redirection to page corresponding to the user Profil
+
+                  //1--a : Redirection Administrateur
+                  if($_SESSION["connectedUser"]["profil"]=="administrateur"){
+                  header("Location: ". ROOT ."administration");
+                  exit;
+                  }
+
+                 //1--b : Redirection Superviseur
+                 if($_SESSION["connectedUser"]["profil"]=="superviseur"){
+                   header("Location: ". ROOT ."supervision");
+                   exit;
+                   }
+                                   
+                  //1--c : Redirection Gestion Chauffeurs
+                  if($_SESSION["connectedUser"]["profil"]=="gestionChauffeurs"){
+                   header("Location: ". ROOT ."gestionchauffeurs");
+                   exit;
+                   }
 
 
-                     //Redirection to page corresponding to the user Profil
-
-                     //1--a : Redirection Administrateur
-                     if($_SESSION["connectedUser"][0]["profil"]=="administrateur"){
-                     header("Location: ". ROOT ."administration");
-                     exit;
-                     }
-
-                    //1--b : Redirection Superviseur
-                    if($_SESSION["connectedUser"][0]["profil"]=="superviseur"){
-                      header("Location: ". ROOT ."supervision");
-                      exit;
-                      }
-                                      
-                     //1--c : Redirection Gestion Chauffeurs
-                     if($_SESSION["connectedUser"][0]["profil"]=="gestionChauffeurs"){
-                      header("Location: ". ROOT ."gestionchauffeurs");
-                      exit;
-                      }
+                    //1--d : Redirection Gestion Voyages
+                  if($_SESSION["connectedUser"]["profil"]=="gestionVoyages"){
+                   header("Location: ". ROOT ."gestionvoyages");
+                   exit;
+                   }
 
 
-                       //1--d : Redirection Gestion Voyages
-                     if($_SESSION["connectedUser"][0]["profil"]=="gestionVoyages"){
-                      header("Location: ". ROOT ."gestionvoyages");
-                      exit;
-                      }
+                    //1--e : Redirection Gestion Camions
+                  if($_SESSION["connectedUser"]["profil"]=="gestionCamions"){
+                   header("Location: ". ROOT ."gestioncamions");
+                   exit;
+                   }
 
-
-                       //1--e : Redirection Gestion Camions
-                     if($_SESSION["connectedUser"][0]["profil"]=="gestionCamions"){
-                      header("Location: ". ROOT ."gestioncamions");
-                      exit;
-                      }
-
-                       //1--f : Redirection Autre Profil
-                     if($_SESSION["connectedUser"][0]["profil"]=="autre"){
-                      header("Location: ". ROOT ."autreprofil");
-                      exit;
-                      }
+                    //1--f : Redirection Autre Profil
+                  if($_SESSION["connectedUser"]["profil"]=="autre"){
+                   header("Location: ". ROOT ."autreprofil");
+                   exit;
+                   }
+               
                   
-                     
-                    
-                  } 
-                   // 1.5-1-2-2 -- If the password does not match
-                  else {
-                    $this->loginerror.="Oups, Courriel et/ou Mot de passe incorrecte (s). Merci de réessayer ! <br>";
-                  }
-        
-                  }
-        
-            $_SESSION["login_error"]=$this->loginerror; 
+                 
+               } 
+                // 1.5-1-2-2 -- If the password does not match
+               else {
+                 $this->loginerror.="Oups, Courriel et/ou Mot de passe incorrecte (s). Merci de réessayer ! <br>";
+               }
+     
+
+            }
+          
+          }       
+                  $_SESSION["login_error"]=$this->loginerror;
+                 
                 
     }
       
