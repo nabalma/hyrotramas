@@ -195,27 +195,27 @@ class User {
                       exit;
                       }
                                       
-                     //1--a : Redirection Gestion Chauffeurs
+                     //1--c : Redirection Gestion Chauffeurs
                      if($_SESSION["connectedUser"][0]["profil"]=="gestionChauffeurs"){
                       header("Location: ". ROOT ."gestionchauffeurs");
                       exit;
                       }
 
 
-                       //1--a : Redirection Gestion Voyages
+                       //1--d : Redirection Gestion Voyages
                      if($_SESSION["connectedUser"][0]["profil"]=="gestionVoyages"){
                       header("Location: ". ROOT ."gestionvoyages");
                       exit;
                       }
 
 
-                       //1--a : Redirection Gestion Camions
+                       //1--e : Redirection Gestion Camions
                      if($_SESSION["connectedUser"][0]["profil"]=="gestionCamions"){
                       header("Location: ". ROOT ."gestioncamions");
                       exit;
                       }
 
-                       //1--a : Redirection Autre Profil
+                       //1--f : Redirection Autre Profil
                      if($_SESSION["connectedUser"][0]["profil"]=="autre"){
                       header("Location: ". ROOT ."autreprofil");
                       exit;
