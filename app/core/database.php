@@ -33,12 +33,19 @@ public function __construct()
 //sinon, elle instancie la classe (la construit) et return linstance (la classe en entier)
 //------------------------------------------------------------------------------------
 
-public static function getInstance()
+public static function getConInstance()
 {
     if(self::$con){
         return self::$con;
     }
     
+    $dbaInstance = new self();
+    return $dbaInstance::$con;
+
+}
+
+public static function getDbInstance()
+{  
     $dbaInstance = new self();
     return $dbaInstance;
 
@@ -60,7 +67,7 @@ public function read($query,$data=array()){
 
     //Gestion du resultat de la requete 
     if($result){
-        $data = $stm->fetchAll(PDO::FETCH_OBJ);
+        $data = $stm->fetchAll(PDO::FETCH_ASSOC);
         if(is_array($data)){
             return $data;
         }

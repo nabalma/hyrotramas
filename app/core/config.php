@@ -9,10 +9,10 @@ define("ASSETS",$path."assets/");
 
 
 // Website Titles
-define("WEBSITE_TITLE","FILMOTHEQUE");
+define("WEBSITE_TITLE","HYROTRAMAS");
 
 //Database informations
-define("DB_NAME","filmotheque_db");
+define("DB_NAME","hyrotramas_v2_db");
 define("DB_USER","root");
 define("DB_PASS","");
 define("DB_TYPE","mysql");
