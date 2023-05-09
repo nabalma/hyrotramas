@@ -4,7 +4,16 @@ class Home extends Controller{
   
     // Il sagit ici de la fonction index du controleur Home. En effet, si lurl est home/index, cest cette fonction index qui sexecute. 
     
-    public function index(){  
+    public function index(){ 
+        
+
+        //Unsetting all the sessions set, one by one 
+        unsetAllSessions();
+
+
+        // Destroying all the sessions
+        session_destroy();        
+     
         
 
 

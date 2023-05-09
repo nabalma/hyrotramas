@@ -10,6 +10,8 @@
 
      <!--Header-->
     <div class="row mx-auto mt-5 mb-5 w-50 container d-flex align-items-evenly" style="max-height:100%">
+
+   
     
     <div class="col ">
         <div class="card border border-1 shadow-lg p-3 mb-5 bg-body rounded">
@@ -25,7 +27,7 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">HYROTRAMAS, Version 2.0</h5>
-                    <p class="fs-6 card-text" style="text-shadow: #FC0 1px 0 10px;">L’informatique au service de vos opérations des transports routiers des hydrocarbures.</p>   
+                    <p class="fs-6 card-text" style="text-shadow: #FC0 1px 0 10px;">Conçue pour vos opérations de transport routiers des hydrocarbures.</p>   
                 </div>
           
            

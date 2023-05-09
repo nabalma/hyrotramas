@@ -14,6 +14,14 @@
     <!--Bootstrap JS-->
     <script src="<?=ASSETS ?>js/bootstrap.bundle.js"></script>
 
+
+    <!-- Importation de la librairie de Chart-js -->
+    <script src="<?=ASSETS ?>js/librairie_chart_js_3_8_0.js"></script>
+
+
+    <!-- Importation du fichier code des dashboard de Chart-js -->
+    <script src="<?=ASSETS ?>js/dashboardchart.js" defer></script>
+
      <!--Title-->
     <title>HYROTRAMAS | Home </title>
   
@@ -33,7 +41,7 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-1 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="page_acceuil_voyages.php">Acceuil</a>
+                        <a class="nav-link active" aria-current="page" href="<?php ROOT ?>home">Acceuil</a>
                     </li>
 
                 <!--Display the ADMIN link if the user is an Admin -->

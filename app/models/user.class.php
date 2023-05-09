@@ -212,9 +212,7 @@ class User {
 public function logout(){
 
   //Unsetting all the sessions set, one by one 
-  unset($_SESSION["login_error"]);
-  unset($_SESSION["connectedUser"]);
-  unset( $_SESSION["signUperror"]);
+  unsetAllSessions();
 
 
 

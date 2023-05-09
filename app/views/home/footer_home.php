@@ -76,7 +76,7 @@
     <!-- Footer Section Copyright -->
     <section>
         <div class="mt-1 copyright text-center p-2 " style="background-color: rgb(244, 236, 236) ">
-            Ousseynou Nabalma © 2022 Copyright.
+            Hyrotramas, Version 2.0 © 2023 Copyright.
         </div>
     </section>
 
