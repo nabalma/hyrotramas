@@ -13,11 +13,15 @@
     
     <div class="col ">
         <div class="card border border-1 shadow-lg p-2 mb-5 bg-body rounded">
-                <p class="text-center text-white bg-secondary card-img-top h4 p-1" style="font-family:Arial, Helvetica, sans-serif">GESTIONNAIRE DES CAMIONS</p>
+                <p class="text-center text-white bg-secondary card-img-top h4 p-1" style="font-family:Arial, Helvetica, sans-serif">TABLEAU DE BORD GENERAL</p>
         </div>
     </div>
         
     </div>
+
+    <form class="row d-flex mx-auto w-25">
+            <button class="fw-bold fs-5 btn btn-outline-primary" type="submit" name="suivant">SUIVANT</button>   
+    </form>
     
     <!--End Header-->
 

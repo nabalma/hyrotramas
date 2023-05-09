@@ -184,47 +184,11 @@ class User {
                  if (password_verify($password, $db_hashed_pass)) {
                   $_SESSION["connectedUser"]=$check[0];
 
-                  //Redirection to page corresponding to the user Profil
-
-                  //1--a : Redirection Administrateur
-                  if($_SESSION["connectedUser"]["profil"]=="administrateur"){
-                  header("Location: ". ROOT ."administration");
+                  //Redirection to page corresponding to the Dashbord Page                 
+                  if(isset($_SESSION["connectedUser"])){
+                  header("Location: ". ROOT ."tableaubordgeneral");
                   exit;
                   }
-
-                 //1--b : Redirection Superviseur
-                 if($_SESSION["connectedUser"]["profil"]=="superviseur"){
-                   header("Location: ". ROOT ."supervision");
-                   exit;
-                   }
-                                   
-                  //1--c : Redirection Gestion Chauffeurs
-                  if($_SESSION["connectedUser"]["profil"]=="gestionChauffeurs"){
-                   header("Location: ". ROOT ."gestionchauffeurs");
-                   exit;
-                   }
-
-
-                    //1--d : Redirection Gestion Voyages
-                  if($_SESSION["connectedUser"]["profil"]=="gestionVoyages"){
-                   header("Location: ". ROOT ."gestionvoyages");
-                   exit;
-                   }
-
-
-                    //1--e : Redirection Gestion Camions
-                  if($_SESSION["connectedUser"]["profil"]=="gestionCamions"){
-                   header("Location: ". ROOT ."gestioncamions");
-                   exit;
-                   }
-
-                    //1--f : Redirection Autre Profil
-                  if($_SESSION["connectedUser"]["profil"]=="autre"){
-                   header("Location: ". ROOT ."autreprofil");
-                   exit;
-                   }
-               
-                  
                  
                } 
                 // 1.5-1-2-2 -- If the password does not match
@@ -241,20 +205,41 @@ class User {
                 
     }
       
+       
+/*----------------------------------------------------------------------------------------------------------- */
+// ----------------------------------- LOGOUT FONCTION  ----------------------------------------------------
+/*----------------------------------------------------------------------------------------------------------- */
+public function logout(){
+
+  //Unsetting all the sessions set, one by one 
+  unset($_SESSION["login_error"]);
+  unset($_SESSION["connectedUser"]);
+  unset( $_SESSION["signUperror"]);
+
+
+
+  // Destroying all the sessions
+  session_destroy();        
+     
     
+}
 
-    
-  public function delete($url){
 
-  }
 
-  public function get_user($url){
 
-  }
+public function delete($url){
 
-  public function get_users(){
+}
 
-  }
+public function get_user($url){
+
+}
+
+public function get_users(){
+
+}
+
+
 
 
 

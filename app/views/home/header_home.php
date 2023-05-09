@@ -30,12 +30,100 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-1 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="page_acceuil_voyages.php">Acceuil</a>
+                    </li>
 
+                <!--Display the ADMIN link if the user is an Admin -->
+                <?php if(isset($_SESSION["connectedUser"]) && $_SESSION["connectedUser"]["profil"]=="administrateur") :?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Admin</a>
+                    </li>
+                <?php endif; ?>
 
-       
+                  <!--Display the ADMIN link if the user is an supervisor -->
+                  <?php if(isset($_SESSION["connectedUser"]) && $_SESSION["connectedUser"]["profil"]=="superviseur") :?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Superviseur</a>
+                    </li>
+                 <?php endif; ?>
 
+                      <!--Display theOperation link if the user is from operation team -->
+                      <?php if(isset($_SESSION["connectedUser"]) && ($_SESSION["connectedUser"]["profil"]=="gestionCamions" OR $_SESSION["connectedUser"]["profil"]=="gestionChauffeurs" OR $_SESSION["connectedUser"]["profil"]=="gestionVoyages")) :?>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Gestion Opérations
+                    </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                         <!--Display the ADMIN link if the user is an supervisor -->
+                        <?php if(isset($_SESSION["connectedUser"]) && $_SESSION["connectedUser"]["profil"]=="gestionCamions") :?>
+                            <li>
+                                <a class="dropdown-item" href="#">Gestionnaire Camions</a>
+                            </li>
+                        <?php endif; ?>
+
+                            
+
+                        <!--Display the ADMIN link if the user is an Driver Manager -->
+                        <?php if(isset($_SESSION["connectedUser"]) && $_SESSION["connectedUser"]["profil"]=="gestionChauffeurs") :?>
+                            <li>
+                                <a class="dropdown-item" href="#">Gestionnaire Chauffeurs</a>
+                            </li>
+                        <?php endif; ?>
+
+                           
+
+                            <!--Display the ADMIN link if the user is an Driver Manager -->
+                        <?php if(isset($_SESSION["connectedUser"]) && $_SESSION["connectedUser"]["profil"]=="gestionVoyages") :?>
+                            <li>
+                                <a class="dropdown-item" href="page_voyages.php">Gestionnaire Voyages</a>
+                            </li>
+                        <?php endif; ?>
+
+                        </ul>
+                    </li>
+                    <?php endif; ?>
+
+                </ul>
+
+<?php if(isset($_SESSION["connectedUser"])) : ?>
+        <div class="dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="#150452" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+        </svg>
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            <?php echo($_SESSION["connectedUser"]["prenom"]);?>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-outline-dark" aria-labelledby="dropdownMenuButton2">
+                  
+                    <li>
+                        <a class="dropdown-item active" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="#150452" class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            </svg>
+                         Profil
+                        </a>
+                    </li>
+
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <a class="dropdown-item" href="<?php ROOT ?>logout">
+                        <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="#150452" class="bi bi-power" viewBox="0 0 16 16">
+                        <path d="M7.5 1v7h1V1h-1z"/>
+                        <path d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z"/>
+                        </svg>Log Out
+                        </a>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    
+            </ul>
+        </div>
+<?php endif; ?>
 
                 
 
@@ -45,4 +133,3 @@
             </div>
         </div>
     </nav>
-
