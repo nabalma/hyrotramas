@@ -11,16 +11,17 @@
      <!--Title-->
     <div class="row mx-auto mt-2 mb-1 w-75 container d-flex align-items-center" style="max-height:100%">
     
-    <div class="col ">
+    <div class="col-8">
         <div class="card border border-1 shadow-lg p-0 mb-1 bg-body rounded">
                 <p class="text-center text-white bg-secondary card-img-top h4 p-1" style="font-family:Arial, Helvetica, sans-serif">TABLEAU DE BORD GENERAL</p>
         </div>
     </div>
-    <div class="col">
-        <form class="row d-flex mx-auto w-50">
-                <button class="fw-bold fs-5 btn btn-outline-primary" type="submit" name="suivant">SUIVANT</button>   
+    <div class="col-4">
+    <div class="card border border-1 shadow-lg p-1 mb-1 bg-body w-50 rounded">
+        <form method="post" class="row d-flex mx-auto w-100">
+                <button  class="fw-bold fs-5 btn btn-outline-primary" type ="submit" name="suivant" >SUIVANT</button>   
         </form>
-
+    </div>
     </div>
         
     </div>
@@ -51,20 +52,35 @@
 
   <div class="row mt-1">
 
-  <!-- Volumes transportés, ,Representation 1 -->
+  <!-- Volumes transportés, Representation 1 -->
 <div class="col">
 
       <div class="card">  
           <div class="card-body">
-               <div class="row">
+              <div class="row">
                       <h5 class="col card-title h6 fw-bold">Volumes transportés</h5>
-                      <div class="col btn-group" role="group" aria-label="Basic outlined example">
-                          <button type="submit" name="" class="btn btn-outline-primary">2023</button>
-                          <button type="submit" name="" class="btn btn-outline-primary">2024</button>
-                          <button type="submit"  name="" class="btn btn-outline-primary">2025</button>
+                      <div class="col btn-group" role="group" aria-label="Basic outlined example"> 
+                        
+                       <!--Boucle pour recuperer les dernieres années dexploitation -->
+                        <?php  
+                        foreach ($this->displayedData as $key => $value) :
+                            if ($key == "annees") :
+                                foreach ($value as $annee) :?>
+                                <form method="post"><button type="submit" name="selectAnnee_Volume_Transporte" value="<?= $annee['annee']?>" class="btn btn-outline-primary <?php if($annee['annee']==$this->displayedData["annee_selection"]){echo "active";}?>"><?= $annee['annee']?></button></form>
+                                <?php endforeach;  
+                                endif; 
+                        endforeach; ?> 
+                       <!--Boucle pour recuperer les dernieres années dexploitation -->
                       </div>
               </div>
-              <canvas id="representation1"></canvas>      
+         <!--Canvas erreur quote     <canvas id="representation1" data-labels="['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet']" data-values="[12, 19, 3, 5, 2, 3, 8]"></canvas> -->
+          <!--Canvas donnees brutes    <canvas id="representation1" data-labels='["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet"]' data-values="[12, 19, 13, 15, 2, 3, 8]"></canvas> -->
+            <canvas id="representation1" 
+                       
+            data-labels=<?php echo $this->displayedData["liste_des_mois_volume_transporte"] ?>        
+            data-values=<?php echo $this->displayedData["liste_des_volumes_transportes_json"] ?> >
+           
+            </canvas>
           </div>  
       </div> 
 

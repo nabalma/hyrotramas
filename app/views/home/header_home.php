@@ -16,7 +16,7 @@
 
 
     <!-- Importation de la librairie de Chart-js -->
-    <script src="<?=ASSETS ?>js/librairie_chart_js_3_8_0.js"></script>
+    <script src="<?=ASSETS ?>js/librairie_chart_js_3_8_0.js" defer></script>
 
 
     <!-- Importation du fichier code des dashboard de Chart-js -->

@@ -240,6 +240,31 @@ public function get_users(){
 
 
 
+public function selectionnerTroisDerniereAnnees(){
+   //1.1 -- Instanciation de la BD, Ne pas instancier une db car il se peut qune soit deja instancier quelque part. Faire plutot get instance...
+   $db=Database::getDbInstance();
+
+    // 1.5-1 -- before saving the user, check if the email is  in the database
+    $query="SELECT DISTINCT annee FROM test ORDER BY annee ASC LIMIT 3";
+    $annees=$db->read($query);
+    return $annees;
+
+}
+
+
+
+public function volumesparmois($annee){
+  //1.1 -- Instanciation de la BD, Ne pas instancier une db car il se peut qune soit deja instancier quelque part. Faire plutot get instance...
+  $db=Database::getDbInstance();
+
+   // 1.5-1 -- before saving the user, check if the email is  in the database
+   $query="SELECT mois,volumetransportes FROM test WHERE annee = :annee ORDER by ref ASC";
+   $data["annee"]=$annee;
+   $volumesparmois=$db->read($query,$data);
+   return  $volumesparmois ;
+
+}
+
 
 
 
