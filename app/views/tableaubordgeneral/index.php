@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+   
+
+
+     <!--Title-->
+    <title>HYROTRAMAS | Global TDB </title>
+</head>
 
 <body>
 
@@ -11,12 +18,12 @@
      <!--Title-->
     <div class="row mx-auto mt-2 mb-1 w-75 container d-flex align-items-center" style="max-height:100%">
     
-    <div class="col-8">
+    <div class="col col-md-8">
         <div class="card border border-1 shadow-lg p-0 mb-1 bg-body rounded">
                 <p class="text-center text-white bg-secondary card-img-top h4 p-1" style="font-family:Arial, Helvetica, sans-serif">TABLEAU DE BORD GENERAL</p>
         </div>
     </div>
-    <div class="col-4">
+    <div class="col col-md-4">
     <div class="card border border-1 shadow-lg p-1 mb-1 bg-body w-50 rounded">
         <form method="post" class="row d-flex mx-auto w-100">
                 <button  class="fw-bold fs-5 btn btn-outline-primary" type ="submit" name="suivant" >SUIVANT</button>   
@@ -29,19 +36,19 @@
 
     <div class="mt-1 container">
 
-  <div class="row mb-0 d-flex justify-content-around">
+  <div class="row container mb-0 d-flex justify-content-between mx-auto">
 
-    <div class="col"></div> 
+   
     <!--Titre de la page -->
   
-    <div class="col text-center mt-0 mx-auto card">
+    <div class="col text-center mt-0 card">
     <div class="py-2">
         <h5 class="h4 card-title">Tableau de bord Opérations</h5>
     </div>
     </div>
 
     <!--Titre de la page -->
-    <div class="ms-2 col text-center mt-0 mx-auto card">
+    <div class="ms-2 col text-center mt-0 card">
     <div class="py-2">
         <h5 class="h4 card-title">Performances Globales</h5>
     </div>

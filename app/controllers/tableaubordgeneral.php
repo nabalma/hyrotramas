@@ -10,9 +10,9 @@ class TableauBordGeneral extends Controller{
     public function index(){ 
 
 
-//********************************************* */
-//TEST ANNEE ET VOLUMES TRANSPORTES
-/************************************************ */
+        //********************************************* */
+        //TEST ANNEE ET VOLUMES TRANSPORTES
+        /************************************************ */
         //1.0- Importer le fichier modele
        $user = $this->load_model("User"); //Attention, le parametre a provider ici doit etre entre quote (cest un string ) et doit commencer par une majuscule
 
@@ -29,10 +29,10 @@ class TableauBordGeneral extends Controller{
       $volumesparmois = $user->volumesparmois($annee_selection);
 
       //Traiter les données pour les mois 
-      $this->displayedData["liste_des_mois_volume_transporte"]=genererListeDesMois($volumesparmois);
+      $this->displayedData["liste_des_mois_volume_transporte"]=genererLaxeDesAbcisses($volumesparmois);
 
       //Traiter les données pour les volumes transportés 
-      $this->displayedData["liste_des_volumes_transportes_json"]=genererListeDesVolumesTransportes($volumesparmois);
+      $this->displayedData["liste_des_volumes_transportes_json"]=genererLaxeDesOrdonnees($volumesparmois);
 
 
       
@@ -53,10 +53,10 @@ class TableauBordGeneral extends Controller{
       $volumesparmois = $user->volumesparmois($annee_selection);
 
       //Traiter les données pour les mois 
-      $this->displayedData["liste_des_mois_volume_transporte"]=genererListeDesMois($volumesparmois);
+      $this->displayedData["liste_des_mois_volume_transporte"]=genererLaxeDesAbcisses($volumesparmois);
 
       //Traiter les données pour les volumes transportés 
-      $this->displayedData["liste_des_volumes_transportes_json"]=genererListeDesVolumesTransportes($volumesparmois);
+      $this->displayedData["liste_des_volumes_transportes_json"]=genererLaxeDesOrdonnees($volumesparmois);
 
          
         
@@ -107,8 +107,14 @@ class TableauBordGeneral extends Controller{
                      header("Location: ". ROOT ."gestioncamions");
                      exit;
                      }
+
+                       //1--f : Redirection Gestion HSSE
+                    if($_SESSION["connectedUser"]["profil"]=="gestionHsse"){
+                      header("Location: ". ROOT ."gestionHsse");
+                      exit;
+                      }
   
-                      //1--f : Redirection Autre Profil
+                      //1--g : Redirection Autre Profil
                     if($_SESSION["connectedUser"]["profil"]=="autre"){
                      header("Location: ". ROOT ."autreprofil");
                      exit;
@@ -138,7 +144,7 @@ class TableauBordGeneral extends Controller{
 ------------------FONCTIONS HORS CLASSES UTILES POUR CETTE PAGE
 -------------------------------------------------------------------------*/
 
-function genererListeDesMois($volumesparmois){
+function genererLaxeDesAbcisses($volumesparmois){
   
   $displayedData=[];
 
@@ -172,7 +178,7 @@ function genererListeDesMois($volumesparmois){
 
 
 
-function genererListeDesVolumesTransportes($volumesparmois){
+function genererLaxeDesOrdonnees($volumesparmois){
   
   $displayedData=[];
 

@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>HYROTRAMAS | Administration </title>
+<body>
+
 <?php $this->view("home/header_home"); ?>
 
 

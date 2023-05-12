@@ -1,94 +1,77 @@
 
+var userProfil = document.getElementById("userProfil");
+
+if(userProfil !=null && userProfil =="administrateur"){
+  console.log(userProfil.textContent);
+}
+
+if(userProfil !=null && userProfil =="superviseur"){
+  console.log(userProfil.textContent);
+}
+
+if(userProfil !=null && userProfil =="gestionChauffeurs"){
+  console.log(userProfil.textContent);
+}
+
+if(userProfil !=null && userProfil =="gestionVoyages"){
+  console.log(userProfil.textContent);
+}
+
+if(userProfil !=null && userProfil =="gestionCamions"){
+  console.log(userProfil.textContent);
+}
+
+
+if(userProfil !=null && userProfil =="gestionHsse"){
+  console.log(userProfil.textContent);
+}
+
+
+if(userProfil !=null && userProfil =="autre"){
+  console.log(userProfil.textContent);
+}
+
+
+
+// Toutes les courbes du global Dashbord seront sans ifconcitions. 
+//Par contre, celles qui devront safficher selon le profil auront leurs var cti encadrés par le if conditionné par le profil.
+
+
+
 /*
-//  Representation 1, transportés, methode parametres bruts au canvas
+//  Representation 0, transportés, methode parametres bruts au canvas
 
-var ct1 = document.getElementById("representation1").getContext("2d");
+var ct0 = document.getElementById("representation0").getContext("2d");
 
 // Récupérez les données du canvas en tant que chaînes JSON
 var labels = document
-  .getElementById("representation1")
+  .getElementById("representation0")
   .getAttribute("data-labels");
 var values = document
-  .getElementById("representation1")
+  .getElementById("representation0")
   .getAttribute("data-values");
 
 // Convertissez les chaînes JSON en objets JavaScript
 var labelsObj = JSON.parse(labels);
 var valuesObj = JSON.parse(values);
 
-var chart1 = new Chart(ct1, {
+var chart0 = new Chart(ct0, {
   type: "bar",
   data: {
-   labels: [
-      "Janvier",
-      "Fevrier",
-      "Mars",
-      "Avril",
-      "Mai",
-      "Juin",
-      "Juillet ",
-      "Aout",
-      "Sept",
-      "Octobre",
-      "Novembre",
-      "Décembre",
-    ],
-       
-    labels: labelsObj, // Nouveau labels, venant des valeurs passées au canvas
-
-    datasets: [
-      {
-        label: "transportés (millions de litres)",
-       data: [120, 19, 13, 25, 22, 13, 28, 30, 75, 66, 48, 55], 
-    
-      data: valuesObj, // Nouveau data, venant des valeurs passées au canvas
-        backgroundColor: ["#80024D"],
-        borderColor: ["#80024D"],
-        borderWidth: 1,
-      },
-    ],
-  },
-  options: {},
-});
-*/
-
-
-
-
-//  Representation 1, transportés, methode parametres au canvas venant de la BD
-
-var ct1 = document.getElementById("representation1").getContext("2d");
-
-// Récupérez les données du canvas en tant que chaînes JSON
-var labels = document
-  .getElementById("representation1")
-  .getAttribute("data-labels");
-var values = document
-  .getElementById("representation1")
-  .getAttribute("data-values");
-
-// Convertissez les chaînes JSON en objets JavaScript
-var labelsObj = JSON.parse(labels);
-var valuesObj = JSON.parse(values);
-
-var chart1 = new Chart(ct1, {
-  type: "bar",
-  data: {
-   
-    // labels: [
-    //   "Janvier",
-    //   "Fevrier",
-    //   "Mars",
-    //   "Avril",
-    //   "Mai",
-    //   "Juin",
-    //   "Juillet ",
-    //   "Aout",
-    //   "Sept",
-    //   "Octobre",
-    //   "Novembre",
-    //   "Décembre",
-    // ],
+  //  labels: [
+  //     "Janvier",
+  //     "Fevrier",
+  //     "Mars",
+  //     "Avril",
+  //     "Mai",
+  //     "Juin",
+  //     "Juillet ",
+  //     "Aout",
+  //     "Sept",
+  //     "Octobre",
+  //     "Novembre",
+  //     "Décembre",
+  //   ],
        
     labels: labelsObj, // Nouveau labels, venant des valeurs passées au canvas
 
@@ -107,15 +90,68 @@ var chart1 = new Chart(ct1, {
   options: {},
 });
 
+*/
 
+
+
+  //  Representation 1, transportés, methode parametres au canvas venant de la BD
+
+var ct1 = document.getElementById("representation1").getContext("2d");
+
+// Récupérez les données du canvas en tant que chaînes JSON
+var labels = document
+  .getElementById("representation1")
+  .getAttribute("data-labels");
+var values = document
+  .getElementById("representation1")
+  .getAttribute("data-values");
+
+// Convertissez les chaînes JSON en objets JavaScript
+var labelsObj = JSON.parse(labels);
+var valuesObj = JSON.parse(values);
+
+var chart1 = new Chart(ct1, {
+  type: "bar",
+  data: {
+    // labels: [
+    //   "Janvier",
+    //   "Fevrier",
+    //   "Mars",
+    //   "Avril",
+    //   "Mai",
+    //   "Juin",
+    //   "Juillet ",
+    //   "Aout",
+    //   "Sept",
+    //   "Octobre",
+    //   "Novembre",
+    //   "Décembre",
+    // ],
+
+    labels: labelsObj, // Nouveau labels, venant des valeurs passées au canvas
+
+    datasets: [
+      {
+        label: "transportés (millions de litres)",
+        //  data: [120, 19, 13, 25, 22, 13, 28, 30, 75, 66, 48, 55],
+
+        data: valuesObj, // Nouveau data, venant des valeurs passées au canvas
+        backgroundColor: ["#80024D"],
+        borderColor: ["#80024D"],
+        borderWidth: 1,
+      },
+    ],
+  },
+  options: {},
+});
 
 
 
 
 //  Representation 2, livrés
 
-const ct2 = document.getElementById("representation2").getContext("2d");
-const chart2 = new Chart(ct2, {
+var ct2 = document.getElementById("representation2").getContext("2d");
+var chart2 = new Chart(ct2, {
   type: "line",
   data: {
     labels: [
@@ -147,8 +183,8 @@ const chart2 = new Chart(ct2, {
 
 //  Representation 3, Coulages
 
-const ct3 = document.getElementById("representation3").getContext("2d");
-const chart3 = new Chart(ct3, {
+var ct3 = document.getElementById("representation3").getContext("2d");
+var chart3 = new Chart(ct3, {
   type: "bar",
   data: {
     labels: [
@@ -242,3 +278,6 @@ const chart5 = new Chart(ct5, {
 });
 
 //  Representation 6, HSSE
+
+//  Representation 7, transportés, methode parametres bruts au canvas
+

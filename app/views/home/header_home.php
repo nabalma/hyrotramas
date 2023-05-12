@@ -14,16 +14,12 @@
     <!--Bootstrap JS-->
     <script src="<?=ASSETS ?>js/bootstrap.bundle.js"></script>
 
-
     <!-- Importation de la librairie de Chart-js -->
     <script src="<?=ASSETS ?>js/librairie_chart_js_3_8_0.js" defer></script>
 
 
     <!-- Importation du fichier code des dashboard de Chart-js -->
     <script src="<?=ASSETS ?>js/dashboardchart.js" defer></script>
-
-     <!--Title-->
-    <title>HYROTRAMAS | Home </title>
   
 </head>
 
@@ -99,6 +95,7 @@
                 </ul>
 
 <?php if(isset($_SESSION["connectedUser"])) : ?>
+    <div id="userProfil" class="visually-hidden me-1"> <?php echo($_SESSION["connectedUser"]["profil"]);?></div>
         <div class="dropdown">
         <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="#150452" class="bi bi-person-circle" viewBox="0 0 16 16">
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>

@@ -29,6 +29,7 @@ class User {
               if(isset($post['acceptconditions'])){
                  $acceptconditions=trim($post['acceptconditions']);
               }
+              $approbation=0;
              
           
  
@@ -98,7 +99,7 @@ class User {
                 
                   // Enregistrement de lutilisateur et affichage du message de succees 
                     // Parametrized query. The values are preceded with : with the same names of the database table column names
-                  $query ="INSERT INTO users(nom,prenom,email,motdepasse,profil,acceptconditions) VALUES(:nom,:prenom,:email,:motdepasse,:profil,:acceptconditions)";
+                  $query ="INSERT INTO users(nom,prenom,email,motdepasse,profil,acceptconditions,approbation) VALUES(:nom,:prenom,:email,:motdepasse,:profil,:acceptconditions,:approbation)";
                   
                     // The data to be used to execute the request. data is an array Object. its values will be the parameters of the query
                     $data["nom"]=$nom;
@@ -109,6 +110,8 @@ class User {
                     $data["motdepasse"]= $hashed_password;
                     $data["profil"]=$profil;
                     $data["acceptconditions"]= $acceptconditions;
+
+                    $data["approbation"]= $approbation;
 
 
                     $result = $db->write($query,$data);
@@ -147,15 +150,14 @@ class User {
               
                $email = trim($post['email']);
                $password = trim($post['password']);
-        
+                     
                
              // 1.3 -- Validation de l'email non vide 
                   
                if(empty($email)){
                    $this->loginerror.=" - Vous devez indiquer une adresse email ! <br> ";
                };
-
-              
+            
               
              //   1.4 -- Validation du mot de passe non vide
         
@@ -177,7 +179,15 @@ class User {
                  $this->loginerror.="Oups, Courriel et/ou Mot de passe incorrecte (s). Merci de réessayer ! <br>";
                } 
                // 1.5-1-2 -- If the user is in the db
-               else{
+               else
+               if($check[0]["approbation"]==0) //If the account is not yet approved
+               {
+                $this->loginerror.="Ce compte est en attente d'approbation ! <br>";
+               }
+               
+               else
+               
+               {
                  $db_hashed_pass=$check[0]["motdepasse"];
      
                  // 1.5-1-2-1 -- If the password matches
@@ -238,7 +248,53 @@ public function get_users(){
 }
 
 
+/********************************************************* */
+// GET THE LIST OF THE USERS NOT YET APPROVED
+/******************************************************* */
+public function get_not_approved_users(){
+  //-- Instanciation de la BD,
+  $db=Database::getDbInstance();
 
+   //  -- Select all the users that are not approved yet 
+   $query="SELECT * FROM users WHERE approbation = :approbation";
+   $data["approbation"]=0;
+   $result=$db->read($query,$data);
+   return  $result ;
+}
+
+/********************************************************* */
+// APPROVER  AN USER 
+/******************************************************* */
+public function approveUser($ref){
+  //-- Instanciation de la BD,
+  $db=Database::getDbInstance();
+
+   //  -- Update the user that are not approved yet 
+   $query="UPDATE users SET approbation = :approbation WHERE ref = $ref";
+   $data["approbation"]=1;
+   $result=$db->write($query,$data);
+
+}
+
+/********************************************************* */
+// SET THE APPROVER OF AN USER APPROVAL REQUEST
+/******************************************************* */
+public function setapprover($approver,$ref){
+  //-- Instanciation de la BD,
+  $db=Database::getDbInstance();
+
+   //  -- Set the approver name 
+   $query="UPDATE users SET approbateur = :approbateur WHERE ref = $ref";
+   $data["approbateur"]=$approver;
+   $result=$db->write($query,$data);
+}
+
+
+
+
+//////////////////////////////////////////////////////////////////////
+////////////// TEST POUR LES GRAPHIQUES /////////////////////////////
+/////////////////////////////////////////////////////////////////////
 
 public function selectionnerTroisDerniereAnnees(){
    //1.1 -- Instanciation de la BD, Ne pas instancier une db car il se peut qune soit deja instancier quelque part. Faire plutot get instance...

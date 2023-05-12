@@ -95,6 +95,13 @@
                                     </div>
 
                                     <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="profil" id="gestionHsse" value="gestionHsse">
+                                        <label class="form-check-label" for="gestionHsse">
+                                        Gestionnaire HSSE
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
                                         <input class="form-check-input" type="radio" name="profil" id="autre" value="autre" checked>
                                         <label class="form-check-label" for="autre">
                                         Autre
@@ -117,7 +124,7 @@
                     
                 </div>
 
-                <div class="mb-4 w-25 mx-auto">
+                <div class="mb-2 w-25 mx-auto">
                     <button type="submit" class="btn btn-primary" name="creerCompte">Créer Compte</button>
                 </div>
 
