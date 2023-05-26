@@ -30,6 +30,7 @@ class User {
                  $acceptconditions=trim($post['acceptconditions']);
               }
               $approbation=0;
+              $approbateur="";
              
           
  
@@ -99,7 +100,7 @@ class User {
                 
                   // Enregistrement de lutilisateur et affichage du message de succees 
                     // Parametrized query. The values are preceded with : with the same names of the database table column names
-                  $query ="INSERT INTO users(nom,prenom,email,motdepasse,profil,acceptconditions,approbation) VALUES(:nom,:prenom,:email,:motdepasse,:profil,:acceptconditions,:approbation)";
+                  $query ="INSERT INTO users(nom,prenom,email,motdepasse,profil,acceptconditions,approbation,approbateur) VALUES(:nom,:prenom,:email,:motdepasse,:profil,:acceptconditions,:approbation,:approbateur)";
                   
                     // The data to be used to execute the request. data is an array Object. its values will be the parameters of the query
                     $data["nom"]=$nom;
@@ -112,10 +113,9 @@ class User {
                     $data["acceptconditions"]= $acceptconditions;
 
                     $data["approbation"]= $approbation;
-
+                    $data["approbateur"]= $approbateur;
 
                     $result = $db->write($query,$data);
-
 
                     
                     // Redirection a la page de Login
@@ -276,6 +276,7 @@ public function approveUser($ref){
 
 }
 
+
 /********************************************************* */
 // SET THE APPROVER OF AN USER APPROVAL REQUEST
 /******************************************************* */
@@ -288,6 +289,21 @@ public function setapprover($approver,$ref){
    $data["approbateur"]=$approver;
    $result=$db->write($query,$data);
 }
+
+
+
+/********************************************************* */
+// SET THE APPROVER OF AN USER APPROVAL REQUEST
+/******************************************************* */
+public function deleteUser($ref){
+  //-- Instanciation de la BD,
+  $db=Database::getDbInstance();
+
+   //  -- Set the approver name 
+   $query="DELETE FROM users WHERE ref = $ref"; 
+   $result=$db->write($query);
+}
+
 
 
 

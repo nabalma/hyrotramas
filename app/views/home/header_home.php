@@ -84,7 +84,7 @@
                             <!--Display the ADMIN link if the user is an Driver Manager -->
                         <?php if(isset($_SESSION["connectedUser"]) && $_SESSION["connectedUser"]["profil"]=="gestionVoyages") :?>
                             <li>
-                                <a class="dropdown-item" href="page_voyages.php">Gestionnaire Voyages</a>
+                                <a class="dropdown-item" href="<?php ROOT?>gestionvoyages">Gestionnaire Voyages</a>
                             </li>
                         <?php endif; ?>
 

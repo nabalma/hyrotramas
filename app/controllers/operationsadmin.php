@@ -22,17 +22,14 @@ class OperationsAdmin extends Controller{
         
       
         if(isset($_POST["approuver"])){
-            $this->set_Approber($_SESSION["connectedUser"]["prenom"],$user,$_POST["ref"]);
-            $this->approve_User($user,$_POST["ref"]);             
-          show($_POST);
+            $this->set_Approver($_SESSION["connectedUser"]["prenom"],$user,$_POST["ref"]);
+            $this->approve_User($user,$_POST["ref"]);           
         }
 
-        if(isset($_POST["rejeter"])){
-          show($_POST);
-        }
+        
 
         if(isset($_POST["supprimer"])){
-          show($_POST);
+          $this->delete_User($user,$_POST["ref"]);   
         }
 
 
@@ -65,7 +62,7 @@ class OperationsAdmin extends Controller{
 
 
      // la fonction de la dite classe qui permet de setter qui est lapprobateur. Elle appelle une fonction la classe Utilisateur
-     public function set_Approber($approver,$user,$ref)
+     public function set_Approver($approver,$user,$ref)
      {  
        $result = $user->setapprover($approver,$ref);
        return $result;       
@@ -78,6 +75,15 @@ class OperationsAdmin extends Controller{
       $result = $user->approveUser($ref);
       return $result;       
     }
+
+     // la fonction de la dite classe qui permet dapprouver le user dont la ref est $ref. Elle appelle une fonction la classe Utilisateur
+     public function delete_User($user,$ref)
+     {  
+       $result = $user->deleteUser($ref);
+       return $result;       
+     }
+
+  
 
      
 
