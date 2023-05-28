@@ -290,10 +290,10 @@
 <div class="col shadow p-2" style="max-width: 9rem;">
 
     <div class=" card border-dark" >
-    <div class="card-header bg-light fw-bold">Distances parcourues</div>
+    <div class="card-header bg-light fw-bold">Moyenne Tournée</div>
     <div class="card-body text-dark row">
-        <h6 class="card-title">(Milliers de Kms)</h6>                 
-        <span class="col badge bg-secondary fs-6">124554</span> 
+        <h6 class="card-title">(Nombre de Jours)</h6>                 
+        <span class="col badge bg-secondary fs-6">21</span> 
 
     </div>
     </div>        

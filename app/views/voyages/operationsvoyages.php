@@ -33,6 +33,7 @@
 
     <div class="container">
         <div class="mt-2 mb-2 row">
+        <div class="col"></div>
                 <div class="col card shadow-lg bg-body rounded">
 
                             <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -47,7 +48,7 @@
                         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             <div class="row">
-                                <div class="col "><button type="button" class="btn btn-outline-primary shadow-lg rounded">Créer STo Dispatch</button></div>
+                                <div class="col "><a href="<?php ROOT ?>safetodispatch" class="btn btn-outline-primary shadow-lg rounded">Créer STo Dispatch</a></div>
                                 <div class="col"><button type="button" class="btn btn-outline-primary shadow-lg rounded">Lister STo Dispatch</button></div>
                             </div>
                         </div>
@@ -75,22 +76,22 @@
                         <h2 class="accordion-header" id="flush-headingThree">
                         <button class="accordion-button collapsed fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                         <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.8rem" viewBox="0 0 48 48"><path fill="#646465" fill-rule="evenodd" d="M29 6v8h13v2H29v7h13V8c0-1.105-.836-2-1.867-2H29Zm0 19h13v7H29v-7Zm0 9h13v6c0 1.105-.836 2-1.867 2H29v-8Zm-2 0v8H15.867C14.836 42 14 41.105 14 40v-6h13Zm0-20H14V8c0-1.105.836-2 1.867-2H27v8Zm-3.948 2v7H27v-7h-3.948Zm0 9v7H27v-7h-3.948ZM6 17a1 1 0 0 1 1-1h13.158a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V17Zm3.607 2h2.26l1.834 3.754L15.64 19h2.112l-2.91 5l2.976 5H15.59l-1.999-3.93l-1.99 3.93H9.34l3.024-5.018L9.607 19Z" clip-rule="evenodd"/></svg>
-                        RAPPORTS EXCEL
+                        EXPORTS EXCEL
                         </button>
                         </h2>
                         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             <div class="mb-1 row">
-                                <div class="col"><button style="width:10rem" type="button" class="btn btn-outline-primary shadow-lg rounded">Lister Chauffeurs</button></div>
-                                <div class="col"><button style="width:10rem" type="button" class="btn btn-outline-primary shadow-lg rounded">Lister STo Dispatch</button></div>
+                                <div class="col"><button style="width:10.5rem" type="button" class="btn btn-outline-primary shadow-lg rounded">Liste des Chauffeurs</button></div>
+                                <div class="col"><button style="width:10.5rem" type="button" class="btn btn-outline-primary shadow-lg rounded">Liste STo Dispatch</button></div>
                             </div>
                             <div class="mb-1 row">
-                                <div class="col "><button style="width:10rem" type="button" class="btn btn-outline-primary shadow-lg rounded">Lister Camions</button></div>
-                                <div class="col"><button style="width:10rem" type="button" class="btn btn-outline-primary shadow-lg rounded">Lister Voyages</button></div>
+                                <div class="col "><button style="width:10.5rem" type="button" class="btn btn-outline-primary shadow-lg rounded">Liste des Camions</button></div>
+                                <div class="col"><button style="width:10.5rem" type="button" class="btn btn-outline-primary shadow-lg rounded">Liste des Voyages</button></div>
                             </div>
                             <div class="mb-1 row">
-                                <div class="col "><button style="width:10rem" type="button" class="btn btn-outline-primary shadow-lg rounded">--- </button></div>
-                                <div class="col"><button style="width:10rem" type="button" class="btn btn-outline-primary shadow-lg rounded">--- </button></div>
+                                <div class="col "><button style="width:10.5rem" type="button" class="btn btn-outline-primary shadow-lg rounded">--- </button></div>
+                                <div class="col"><button style="width:10.5rem" type="button" class="btn btn-outline-primary shadow-lg rounded">--- </button></div>
                             </div>
                         </div>
                         </div>
@@ -100,8 +101,8 @@
                 </div>
        
         
-        <div class="col">col</div>
-        <div class="col">col</div>
+        <div class="col"></div>
+       
         
     </div>
     <div class="row">
