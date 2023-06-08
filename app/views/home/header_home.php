@@ -20,6 +20,11 @@
 
     <!-- Importation du fichier code des dashboard de Chart-js -->
     <script src="<?=ASSETS ?>js/dashboardchart.js" defer></script>
+
+
+     <!-- Importation du fichier jquery pour eventuel Ajax -->
+     <script src="<?=ASSETS ?>js/jquery_3_7_0_min.js" defer></script>
+
   
 </head>
 
