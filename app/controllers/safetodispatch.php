@@ -30,7 +30,7 @@ class Safetodispatch extends Controller{
               $_SESSION["SafetoDispatch"]["transporters"]=$transporters;
             }
               
-            
+
         /*************************************************************************************************************** */
         // Generer la liste de tous les chauffeurs
         /**************************************************************************************************************** */
@@ -128,7 +128,39 @@ class Safetodispatch extends Controller{
             {
               $_SESSION["SafetoDispatch"]["dataCamion"]=$dataCamion;
             }
+
+             //Mise de la date de la formation en session 
+            $echeanceFormation=$chauffeur->get_EcheanceFormationChauffeur($_SESSION["SafetoDispatch"]["dataCamion"][0]["ref_Chauffeur"]);
+            if(isset($_SESSION["SafetoDispatch"]["echeanceformation"]))
+            {
+              unset($_SESSION["SafetoDispatch"]["echeanceformation"]);
+              $_SESSION["SafetoDispatch"]["echeanceformation"]=$echeanceFormation;
+            }
+              else
+            {
+              $_SESSION["SafetoDispatch"]["echeanceformation"]=$echeanceFormation;
+            }
+
+
+             //Mise de la date de la certificat medical en session 
+             $echeanceCertificatMedical=$chauffeur->get_EcheanceVisiteMedicale($_SESSION["SafetoDispatch"]["dataCamion"][0]["ref_Chauffeur"]);
+             if(isset($_SESSION["SafetoDispatch"]["echeancevisitemedicale"]))
+             {
+               unset($_SESSION["SafetoDispatch"]["echeancevisitemedicale"]);
+               $_SESSION["SafetoDispatch"]["echeancevisitemedicale"]=$echeanceCertificatMedical;
+             }
+               else
+             {
+               $_SESSION["SafetoDispatch"]["echeancevisitemedicale"]=$echeanceCertificatMedical;
+             }
       
+      }
+
+
+
+
+      if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["submit_Chauffeur"])){
+        echo $_POST['chauffeur'];
       }
 
 

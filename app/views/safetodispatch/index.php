@@ -246,7 +246,7 @@
 
     <div class="col-2 ms-1" style="width:17rem;height:2.5rem">
     <div style="height:2.5rem;font-size:12px" class="input-group-text bg-body text-wrap text-start" id="basic-addon1">
-    Si oui, joindre la fiche INNOTEC/GLOBO
+    Si oui, joindre la fiche OBC
     </div>
     
     </div>
@@ -303,7 +303,7 @@
 
     <div class="col-2 ms-1" style="width:17rem;height:5rem">
     <div style="height:5rem;font-size:12px" class="input-group-text bg-body text-wrap text-start" id="basic-addon1">
-    Si non, demander une intervention INNOTEC/GLOBO et joindre la fiche d'intervetion ; Si oui, passer à la question 14
+    Si non, demander une intervention OBC et joindre la fiche d'intervetion ; Si oui, passer à la question 14
     </div>
     </div>
 
@@ -329,23 +329,25 @@
         </div>
 
 
-
+    <form id="subFormChauffeur" action="" method="post"> <!-- SubForm Submit Chauffeur-->
         <div class="row mx-auto" style="width:65.5rem">
         
             <div class="input-group">
                 <span style="width:2.5rem" class="input-group-text" id="basic-addon1">14.</span>
                 <span style="width:23rem" class="input-group-text" id="basic-addon1">Noms et Prénoms Chauffeur</span>
 
-                <select id="camion" name="camion" class="form-select text-primary" aria-label="Default select example">
+    
+                <select id="chauffeur" name="chauffeur" class="form-select text-primary" aria-label="Default select example">
                         
 
-                    <option selected>Selectionner Camion</option>
+                    <option selected>Selectionner Chauffeur</option>
                         <?php foreach ($_SESSION["SafetoDispatch"]["chauffeurs"] as $item): ?>
                         <option value="<?php echo $item['ref_Chauffeur']; ?>"<?php       if($_SESSION["SafetoDispatch"]["dataCamion"] && $_SESSION["SafetoDispatch"]["dataCamion"][0]["chauffeur_associe"]==$item['ref_Chauffeur']) {echo "selected";} ?>><?php echo $item["nom_Chauffeur"];echo" "; echo $item["prenom_Chauffeur"] ?></option>  
                     <?php endforeach; ?>
                     </select>
               
-                <div id="submit_Chauffeur" name="submit_Chauffeur" type="submit" class="btn btn-outline-danger">Confirmer</div>
+                <button id="submit_Chauffeur" name="submit_Chauffeur" type="submit" class="btn btn-outline-danger">Confirmer</button>
+    </form>   <!--End  SubForm Submit Chauffeur-->             
                 <div class="d-flex justify-content-center align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21" fill="#4CAF50"/><path fill="#CCFF90" d="M34.6 14.6L21 28.2l-5.6-5.6l-2.8 2.8l8.4 8.4l16.4-16.4z"/></svg>
                     <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 32 32"><g fill="none"><path fill="#F8312F" d="M30 16c0 7.732-6.268 14-14 14S2 23.732 2 16S8.268 2 16 2s14 6.268 14 14Z"/><path fill="#fff" d="M6 15a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-2Z"/></g></svg>
@@ -373,7 +375,7 @@
         <div class="input-group">
             <span style="width:2.5rem" class="input-group-text" id="basic-addon1">16.</span>
             <span style="width:23rem" class="input-group-text" id="basic-addon1">Date Echéance Formation Chauffeur</span>
-            <input type="date" class="form-control" placeholder="Echéance Formation" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="date" class="form-control" placeholder="Echéance Formation" aria-label="Username" aria-describedby="basic-addon1" value="<?php if(isset($_POST["submit_Camion"])) {echo ($_SESSION["SafetoDispatch"]["echeanceformation"][0]["Date_Echéance_Evaluation_Chauffeur"]);} ?>">
             
             <div class="d-flex justify-content-center align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21" fill="#4CAF50"/><path fill="#CCFF90" d="M34.6 14.6L21 28.2l-5.6-5.6l-2.8 2.8l8.4 8.4l16.4-16.4z"/></svg>
@@ -394,7 +396,7 @@
         </div>
 
         <div class="col-4" style="width:17rem">
-        <input type="date" class="form-control" placeholder="Echéance Formation" aria-label="Username" aria-describedby="basic-addon1">       
+        <input type="date" class="form-control" placeholder="Echéance Formation" aria-label="Username" aria-describedby="basic-addon1" value="<?php if(isset($_POST["submit_Camion"])) {echo ($_SESSION["SafetoDispatch"]["echeancevisitemedicale"][0]["Date_Echéance_Certificat_Medical"]);} ?>">       
         </div>
 
         <div class="col-2 ms-1" style="width:17rem;height:2.5rem">
