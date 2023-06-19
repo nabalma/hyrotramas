@@ -65,14 +65,14 @@
         <div class="card-header bg-light fw-bold">Visites Medicales</div>
          <div class="card-body text-dark row">
         <h6 class="card-title">(Prochaine échéance)</h6>                 
-            <span class="mt-2 mb-1 col badge bg-secondary fs-6">10/06/2023</span>    
+            <span class="mt-2 mb-1 col badge bg-secondary fs-5"><?php echo $this->displayedData[2] ?></span>    
         </div>    
         </div>
         
         <div class=" mt-1 card border-dark" style="height:5rem">
         <div class="card text-center bg-light fw-bold">Echues</div>
          <div class="text-dark row">
-        <h6 class="text-center fs-1">0</h6>                      
+        <h6 class="text-center fs-2 <?php if($this->displayedData[3]>0)echo "text-danger" ?>"><?php echo $this->displayedData[3] ?></h6>                      
         </div>    
         </div>   
     </div>
@@ -82,14 +82,14 @@
         <div class="card-header bg-light fw-bold">Formation de Recyclages</div>
         <div class="card-body text-dark row">
         <h6 class="card-title">(Prochaine échéance)</h6>                 
-            <span class="mt-2 mb-1 col badge bg-secondary fs-6">10/07/2023</span>    
+            <span class="mt-2 mb-1 col badge bg-secondary fs-5"><?php echo $this->displayedData[6] ?></span>    
         </div>
        </div>
        
        <div class=" mt-1 card border-dark" style="height:5rem">
         <div class="card text-center bg-light fw-bold">Echues</div>
          <div class="text-dark row">
-        <h6 class="text-center fs-1">0</h6>                      
+        <h6 class="text-center fs-2 <?php if($this->displayedData[7]>0)echo "text-danger" ?>"><?php echo $this->displayedData[7] ?></h6>                      
         </div>    
         </div>   
     </div>
@@ -99,14 +99,14 @@
         <div class="card-header bg-light fw-bold">Experience Professionnelle.</div>
         <div class="card-body text-dark row">
         <h6 class="card-title">(Années de Conduite)</h6>                 
-            <span class="mt-2 mb-1 col badge bg-secondary fs-6">29</span>    
+            <span class="mt-2 mb-1 col badge bg-secondary fs-5"><?php echo $this->displayedData[4] ?></span>    
         </div>
        </div>  
        
        <div class=" mt-1 card border-dark" style="height:5rem">
         <div class="card text-center bg-light fw-bold">Dessus Moy</div>
          <div class="text-dark row">
-        <h6 class="text-center fs-1">25</h6>                      
+        <h6 class="text-center fs-2"><?php echo $this->displayedData[5] ?></h6>                      
         </div>    
         </div>
     </div>
@@ -116,14 +116,14 @@
         <div class="card-header bg-light fw-bold text-danger">Experience Professionnelle.</div>
         <div class="card-body text-dark row">
         <h6 class="card-title">(Années de Conduite)</h6>                 
-            <span class="mt-2 mb-1 col badge bg-secondary fs-6">10/07/2023</span>    
+            <span class="mt-2 mb-1 col badge bg-secondary fs-5">10/07/2023</span>    
         </div>
        </div>  
        
        <div class=" mt-1 card border-dark" style="height:5rem">
         <div class="card text-center bg-light fw-bold">Over Average</div>
          <div class="text-dark row">
-        <h6 class="text-center fs-1">25</h6>                      
+        <h6 class="text-center fs-2">25</h6>                      
         </div>    
         </div>
     </div>

@@ -94,9 +94,50 @@ class Chauffeur {
         }
 
         $moyenneAges = $sommeAges / $nombreChauffeurs;
-                return  $moyenneAges ;
+                return  round($moyenneAges) ;
                 
     }
+
+    public function get_AverageExperienceforActiveDrivers(){
+        //-- Instanciation de la BD,
+        $db=Database::getDbInstance();
+
+        //  -- Select all the users that are not approved yet 
+        $query="SELECT date_Obtention_Permis_Chauffeur FROM chauffeurs WHERE actifOuNon='Actif'";
+        $result=$db->read($query);
+        
+        
+        $sommeExperiences = 0;
+        $nombreChauffeurs = 0;
+
+        foreach ($result as $key => $value) {
+            $dateNaissance = $value['date_Obtention_Permis_Chauffeur'];
+            
+         
+            $age = date("Y")-date("Y", strtotime($dateNaissance));
+            $sommeExperiences += $age;
+            $nombreChauffeurs++;
+        }
+
+        $moyenneExperience = $sommeExperiences / $nombreChauffeurs;
+                return  round($moyenneExperience,1) ;
+                
+    }
+
+
+
+    public function get_Over_Average_Experiences($cible){
+        //-- Instanciation de la BD,
+        $db=Database::getDbInstance();
+
+        //  -- Select all the users that are not approved yet
+        $query="SELECT date_Obtention_Permis_Chauffeur FROM chauffeurs WHERE (((CURDATE()-date_Obtention_Permis_Chauffeur)/366) >=$cible) AND actifOuNon='Actif' GROUP BY Ref_Chauffeur";
+        $result=$db->read($query);
+        return  count($result);
+        
+    }
+
+
 
     
 
