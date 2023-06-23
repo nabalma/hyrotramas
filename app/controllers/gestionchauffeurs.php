@@ -53,6 +53,17 @@ class GestionChauffeurs extends Controller{
           $this->displayedData[]=$nbreFormationsEchues; //Age moyen : Index 7 du displayData
 
 
+          $noteMoyenne=$formation->get_Average_Note_Training();
+          $this->displayedData[]=$noteMoyenne; //Age moyen : Index 8 du displayData
+
+
+
+         
+
+
+
+
+
         // *** - Affichage de la vue
         //--------------------------------------------------------------------------------------------
         //Ici, elle est faite,de par son contenu, pour afficher une vue. La vue index contenu dans le dossier en argument de la fonction view

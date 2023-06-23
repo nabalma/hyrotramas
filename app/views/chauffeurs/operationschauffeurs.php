@@ -23,147 +23,7 @@
 
 
 
-    <div class="row">
-       
-        <div class="col ms-5">
-            <!-- Button trigger modal -->
-                <button type="button" class="mb-1 btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Créer nouveau Chauffeur
-                </button>
 
-            <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-                        <form action="" method="post">
-                        
-                            <div class="card p-1 border border-1 shadow-lg p-2 mb-5 bg-body rounded">
-                                <div class="row gx-0">           
-                                    <div class="col">
-                                        <div class="input-group">
-                                                <span class="input-group-text" id="basic-addon1" style="width:6rem">Actif ?</span>
-                                                <input id="actifOuNon" name="actifOuNon" type="text" class="form-control" placeholder="(In/A)ctivité" aria-label="Username" aria-describedby="basic-addon1">
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon1" style="width:6rem">Ref.</span>
-                                            <input id="reference" name="reference" type="text" class="form-control" placeholder="Reference" aria-label="Username" aria-describedby="basic-addon1">
-                                        </div>
-                                    </div>
-                                </div>
-                    
-                                <div class="row gx-0">  
-                                    <div class="col input-group">
-                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Code</span>
-                                        <input id="code" name="code" type="text" class="form-control" placeholder="Code" aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                    <div class="col input-group">
-                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Matricule</span>
-                                        <input id="numero" name="numero" type="text" class="form-control" placeholder="Matricule" aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                    
-                                <div class="gx-0 row">  
-                                    <div class="col input-group">
-                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Nom</span>
-                                        <input id="nom" name="nom" type="text" class="form-control" placeholder="Nom" aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                    <div class="col input-group">
-                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Prénom</span>
-                                        <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Prénom" aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                    
-                                <div class="gx-0 row">  
-                                    <div class="col input-group">
-                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Naissance</span>
-                                        <input id="dateNaissance" name="dateNaissance" type="text" class="form-control" placeholder="Date de naissance" aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                    <div class="col input-group">
-                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Num. Permis</span>
-                                        <input id="numeroPermis" name="numeroPermis" type="text" class="form-control" placeholder="Nom" aria-label="Numero Permis" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                    
-                                <div class="gx-0 row">             
-                                    <div class="col input-group">
-                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Date Obtent.</span>
-                                        <input id="dateObtentionPermis" name="dateObtentionPermis" type="date" class="form-control" placeholder="Prénom" aria-label="Date Obtention" aria-describedby="basic-addon1">
-                                    </div>
-                                    <div class="col input-group">
-                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Cat. Permis</span>
-                                        <input id="categoriePermis" name="categoriePermis" type="text" class="form-control" placeholder="Categorie Permis" aria-label="Categorie Permis" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                    
-                                <div class="gx-0 row">      
-                                    <div class="col input-group">
-                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Date Recrut.</span>
-                                        <input id="dateRecrutement" name="dateRecrutement" type="date" class="form-control" placeholder="Date Recrutement" aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                    <div class="col input-group">
-                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Date Integ.</span>
-                                        <input id="dateIntegration" name="dateIntegration" type="date" class="form-control" placeholder="Date Integration" aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                    
-                                <div class="gx-0 row">  
-                                    <div class="col input-group">
-                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Contrat</span>
-                                        <input id="typeContrat" name="typeContrat" type="text" class="form-control" placeholder="Contrat" aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                    <div class="col input-group">
-                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Telephone</span>
-                                        <input id="telephone" name="telephone" type="text" class="form-control" placeholder="Téléphone" aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                    
-                                <div class="gx-0 row">  
-                                    <div class="col input-group">
-                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Contrat</span>
-                                        <input id="titulaireBackup" name="titulaireBackup" type="text" class="form-control" placeholder="titulaire ou Backup" aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                    <div class="col input-group">
-                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Camion</span>
-                                        <input id="camion" name="camion" type="text" class="form-control" placeholder="camion" aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                                <div class="input-group mt-1">
-                                    <input type="file" class="form-control" id="inputGroupFile">
-                                    <label class="input-group-text" for="inputGroupFile">Téléverser</label>
-                                </div>
-                                <div class="gx-0 row mt-1">  
-                                               
-                                </div>  
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-outline-primary">Créer Chauffeur</button>
-                            </div>
-
-                        </form>
-            
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-        <div class="col">
-
-        </div>
-        <div class="col"></div>
-        <div class="col"></div>
-        <div class="col"></div>
-        
-    </div>
     
     <div class="ms-1 row">
         <div class="col">
@@ -181,7 +41,10 @@
                     </button>
                 </li>
                 <li class="list-group-item">
-                    <div class="mb-1 text-secondary text-center fw-bold">Rechercher une Formation</div>
+                <div class="mb-1 text-center fw-bold" style="color:#23181C;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><path fill="#36028C" d="m15.504 13.616l-3.79-3.223c-.392-.353-.811-.514-1.149-.499a6 6 0 1 0-.672.672c-.016.338.146.757.499 1.149l3.223 3.79c.552.613 1.453.665 2.003.115s.498-1.452-.115-2.003zM6 10a4 4 0 1 1 0-8a4 4 0 0 1 0 8z"/></svg>
+                        Selectionner une Formation
+                    </div>
                     <form class="">                       
                         <select class="mb-1 form-select btn btn-outline-secondary" aria-label="Default select example">
                             <option selected>Selectionner Transporteur</option>
@@ -195,9 +58,8 @@
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                         </select>
-                        <div class="row">
-                            <div class="col"></div>
-                            <div class="col"><button class="btn btn-primary">Consulter</button></div>
+                        <div class="row d-flex justify-content-center" >
+                        <div style="width:18rem"><button class="w-100 btn btn-outline-primary">Consulter</button></div>                           
                         </div>
                     </form>
                 </li>
@@ -222,7 +84,10 @@
                     </button>
                 </li>
                 <li class="list-group-item">
-                    <div class="mb-1 text-secondary text-center fw-bold">Rechercher une Formation</div>
+                <div class="mb-1 text-center fw-bold" style="color:#23181C;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><path fill="#36028C" d="m15.504 13.616l-3.79-3.223c-.392-.353-.811-.514-1.149-.499a6 6 0 1 0-.672.672c-.016.338.146.757.499 1.149l3.223 3.79c.552.613 1.453.665 2.003.115s.498-1.452-.115-2.003zM6 10a4 4 0 1 1 0-8a4 4 0 0 1 0 8z"/></svg>
+                        Selectionner une Aptitude
+                    </div>
                     <form class="">                       
                         <select class="mb-1 form-select" aria-label="Default select example">
                             <option selected>Selectionner Transporteur</option>
@@ -236,9 +101,8 @@
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                         </select>
-                        <div class="row">
-                            <div class="col"></div>
-                            <div class="col"><button class="btn btn-primary">Consulter</button></div>
+                        <div class="row d-flex justify-content-center" >
+                        <div style="width:18rem"><button class="w-100 btn btn-outline-primary">Consulter</button></div>                           
                         </div>
                     </form>
                 </li>
@@ -274,8 +138,148 @@
                 </li>
                 <li class="list-group-item">
                     <div class="row gx-1">
-                        <div class="col"><button class="btn btn-outline-secondary w-100">col-1</button></div>
-                        <div class="col"><button class="btn btn-outline-secondary w-100">col-2</button></div>
+                    <div class="row">
+       
+       <div class="col">
+        <div class="row">
+           <!-- Button trigger modal -->
+           
+               <button type="button" class="mb-1 btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+               <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.8rem" viewBox="0 0 20 20"><path fill="currentColor" d="M11 9V5H9v4H5v2h4v4h2v-4h4V9h-4zm-1 11a10 10 0 1 1 0-20a10 10 0 0 1 0 20z"/>
+                </svg>
+                        Nouveau Chauffeur
+               </button>
+
+           <!-- Modal -->
+       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+           <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   </div>
+                   <div class="modal-body">
+
+                       <form action="" method="post">
+                       
+                           <div class="card p-1 border border-1 shadow-lg p-2 mb-5 bg-body rounded">
+                               <div class="row gx-0">           
+                                   <div class="col">
+                                       <div class="input-group">
+                                               <span class="input-group-text" id="basic-addon1" style="width:6rem">Actif ?</span>
+                                               <input id="actifOuNon" name="actifOuNon" type="text" class="form-control" placeholder="(In/A)ctivité" aria-label="Username" aria-describedby="basic-addon1">
+                                       </div>
+                                   </div>
+                                   <div class="col">
+                                       <div class="input-group">
+                                           <span class="input-group-text" id="basic-addon1" style="width:6rem">Ref.</span>
+                                           <input id="reference" name="reference" type="text" class="form-control" placeholder="Reference" aria-label="Username" aria-describedby="basic-addon1">
+                                       </div>
+                                   </div>
+                               </div>
+                   
+                               <div class="row gx-0">  
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Code</span>
+                                       <input id="code" name="code" type="text" class="form-control" placeholder="Code" aria-label="Username" aria-describedby="basic-addon1">
+                                   </div>
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Matricule</span>
+                                       <input id="numero" name="numero" type="text" class="form-control" placeholder="Matricule" aria-label="Username" aria-describedby="basic-addon1">
+                                   </div>
+                               </div>
+                   
+                               <div class="gx-0 row">  
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Nom</span>
+                                       <input id="nom" name="nom" type="text" class="form-control" placeholder="Nom" aria-label="Username" aria-describedby="basic-addon1">
+                                   </div>
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Prénom</span>
+                                       <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Prénom" aria-label="Username" aria-describedby="basic-addon1">
+                                   </div>
+                               </div>
+                   
+                               <div class="gx-0 row">  
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Naissance</span>
+                                       <input id="dateNaissance" name="dateNaissance" type="text" class="form-control" placeholder="Date de naissance" aria-label="Username" aria-describedby="basic-addon1">
+                                   </div>
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Num. Permis</span>
+                                       <input id="numeroPermis" name="numeroPermis" type="text" class="form-control" placeholder="Nom" aria-label="Numero Permis" aria-describedby="basic-addon1">
+                                   </div>
+                               </div>
+                   
+                               <div class="gx-0 row">             
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Date Obtent.</span>
+                                       <input id="dateObtentionPermis" name="dateObtentionPermis" type="date" class="form-control" placeholder="Prénom" aria-label="Date Obtention" aria-describedby="basic-addon1">
+                                   </div>
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Cat. Permis</span>
+                                       <input id="categoriePermis" name="categoriePermis" type="text" class="form-control" placeholder="Categorie Permis" aria-label="Categorie Permis" aria-describedby="basic-addon1">
+                                   </div>
+                               </div>
+                   
+                               <div class="gx-0 row">      
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Date Recrut.</span>
+                                       <input id="dateRecrutement" name="dateRecrutement" type="date" class="form-control" placeholder="Date Recrutement" aria-label="Username" aria-describedby="basic-addon1">
+                                   </div>
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Date Integ.</span>
+                                       <input id="dateIntegration" name="dateIntegration" type="date" class="form-control" placeholder="Date Integration" aria-label="Username" aria-describedby="basic-addon1">
+                                   </div>
+                               </div>
+                   
+                               <div class="gx-0 row">  
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Contrat</span>
+                                       <input id="typeContrat" name="typeContrat" type="text" class="form-control" placeholder="Contrat" aria-label="Username" aria-describedby="basic-addon1">
+                                   </div>
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Telephone</span>
+                                       <input id="telephone" name="telephone" type="text" class="form-control" placeholder="Téléphone" aria-label="Username" aria-describedby="basic-addon1">
+                                   </div>
+                               </div>
+                   
+                               <div class="gx-0 row">  
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Contrat</span>
+                                       <input id="titulaireBackup" name="titulaireBackup" type="text" class="form-control" placeholder="titulaire ou Backup" aria-label="Username" aria-describedby="basic-addon1">
+                                   </div>
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Camion</span>
+                                       <input id="camion" name="camion" type="text" class="form-control" placeholder="camion" aria-label="Username" aria-describedby="basic-addon1">
+                                   </div>
+                               </div>
+                               <div class="input-group mt-1">
+                                   <input type="file" class="form-control" id="inputGroupFile">
+                                   <label class="input-group-text" for="inputGroupFile">Téléverser</label>
+                               </div>
+                               <div class="gx-0 row mt-1">  
+                                              
+                               </div>  
+                           </div>
+
+                           <div class="modal-footer">
+                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                               <button type="button" class="btn btn-outline-primary">Créer Chauffeur</button>
+                           </div>
+
+                       </form>
+           
+                   </div>
+               </div>
+           </div>
+       </div>
+       </div>
+   </div>
+      
+       
+       
+   </div>
                     </div>
                 </li>
             </ul>           
@@ -298,7 +302,10 @@
                     </button>
                 </li>
                 <li class="list-group-item">
-                    <div class="mb-1 text-secondary text-center fw-bold">Rechercher une Formation</div>
+                    <div class="mb-1 text-center fw-bold" style="color:#23181C;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><path fill="#36028C" d="m15.504 13.616l-3.79-3.223c-.392-.353-.811-.514-1.149-.499a6 6 0 1 0-.672.672c-.016.338.146.757.499 1.149l3.223 3.79c.552.613 1.453.665 2.003.115s.498-1.452-.115-2.003zM6 10a4 4 0 1 1 0-8a4 4 0 0 1 0 8z"/></svg>
+                        Selectionner une Carte
+                    </div>
                     <form class="">                       
                         <select class="mb-1 form-select" aria-label="Default select example">
                             <option selected>Selectionner Transporteur</option>
@@ -312,9 +319,8 @@
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                         </select>
-                        <div class="row">
-                            <div class="col"></div>
-                            <div class="col"><button class="btn btn-primary">Consulter</button></div>
+                        <div class="row d-flex justify-content-center" >
+                        <div style="width:18rem"><button class="w-100 btn btn-outline-primary">Consulter</button></div>                           
                         </div>
                     </form>
                 </li>
@@ -340,16 +346,18 @@
 
   
     <div class="ms-1 row">
-        <div class="col"><button class="btn btn-outline-danger">Critère 1</button></div>
-        <div class="col"><button class="btn btn-outline-danger">Critère 2</button></div>
-        <div class="col"><button class="btn btn-outline-danger">Critère 3</button></div>
-        <div class="col"><button class="btn btn-outline-danger">Critère 4</button></div>
-        <div class="col">
+        <div class="col"></div>
+        <div class="col" ><button class="btn btn-outline-danger" style="width:15rem">Critère 1</button></div>
+        <div class="col"><button class="btn btn-outline-danger" style="width:15rem">Critère 2</button></div>
+        <div class="col"><button class="btn btn-outline-danger" style="width:15rem">Critère 3</button></div>
+        
+        <div class="col-2" style="width:25rem">
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-danger" type="submit">Search</button>
             </form>
         </div>
+        <div class="col"></div>
     </div>
 
     <div class="row ms-1 me-1">  
@@ -357,77 +365,42 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Code</th>
-      <th scope="col">Matricule</th>
+  
       <th scope="col">Nom</th>
       <th scope="col">Prénom</th>
+      <th scope="col">Matricule</th>
       <th scope="col">Date de Naissance</th>
       <th scope="col">Numéro Permis</th>
-      <th scope="col">Catégorie Permis</th>
-      <th scope="col">Info 1</th>
-      <th scope="col">Info 2</th>
-      <th scope="col">Info 3</th>
-      <th scope="col">Info 4</th>
       <th scope="col">Téléphone</th>
+      <th scope="col">Echéance Evaluation</th>
+      <th scope="col">Echéance Medicale</th>
       <th scope="col">Actif ?</th>
       <th scope="col">Détails</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>Otto</td>
-     
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>Otto</td>
-     
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>Otto</td>
-     
-    </tr>
+  <tbody>   
+
+    <?php foreach ($this->displayedData[0] as $row) : ?>
+      <tr>
+        <th scope="row"><?php echo $row['ref_Chauffeur']; ?></td>
+        <td><?php echo $row['nom_Chauffeur']; ?></td>
+        <td><?php echo $row['prenom_Chauffeur']; ?></td>
+        <td><?php echo $row['numero_Matricule_Chauffeur']; ?></td>      
+        <td><?php echo $row['date_de_naissance_Chauffeur']; ?></td>
+        <td><?php echo $row['numero_Permis_Chauffeur']; ?></td>
+        <td><?php echo $row['numero_Telephone_Chauffeur']; ?></td>
+        <td><?php echo $row['echeanceVisite']; ?></td>
+        <td><?php echo $row['echeanceFormation']; ?></td>
+        <td><?php echo $row['actifOuNon']; ?></td>
+        <td>
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 24 24"><path fill="#36028C" d="m19.3 8.925l-4.25-4.2l1.4-1.4q.575-.575 1.413-.575t1.412.575l1.4 1.4q.575.575.6 1.388t-.55 1.387L19.3 8.925ZM17.85 10.4L7.25 21H3v-4.25l10.6-10.6l4.25 4.25Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 36 36"><path fill="#278F05" d="M32 6H4a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2ZM19 22H9a1 1 0 0 1 0-2h10a1 1 0 0 1 0 2Zm8-4H9a1 1 0 0 1 0-2h18a1 1 0 0 1 0 2Zm0-4H9a1 1 0 0 1 0-2h18a1 1 0 0 1 0 2Z" class="clr-i-solid clr-i-solid-path-1"/><path fill="none" d="M0 0h36v36H0z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 512 512"><path fill="none" d="M296 64h-80a7.91 7.91 0 0 0-8 8v24h96V72a7.91 7.91 0 0 0-8-8Z"/><path fill="red" d="M432 96h-96V72a40 40 0 0 0-40-40h-80a40 40 0 0 0-40 40v24H80a16 16 0 0 0 0 32h17l19 304.92c1.42 26.85 22 47.08 48 47.08h184c26.13 0 46.3-19.78 48-47l19-305h17a16 16 0 0 0 0-32ZM192.57 416H192a16 16 0 0 1-16-15.43l-8-224a16 16 0 1 1 32-1.14l8 224A16 16 0 0 1 192.57 416ZM272 400a16 16 0 0 1-32 0V176a16 16 0 0 1 32 0Zm32-304h-96V72a7.91 7.91 0 0 1 8-8h80a7.91 7.91 0 0 1 8 8Zm32 304.57A16 16 0 0 1 320 416h-.58A16 16 0 0 1 304 399.43l8-224a16 16 0 1 1 32 1.14Z"/></svg>
+        </td>
+      </tr>
+    <?php endforeach; ?>
+
+
   </tbody>
 </table>
     </div>

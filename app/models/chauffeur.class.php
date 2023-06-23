@@ -138,6 +138,23 @@ class Chauffeur {
     }
 
 
+    public function get_Drivers_details(){
+        //-- Instanciation de la BD,
+        $db=Database::getDbInstance();
+
+        //  -- Select all the users that are not approved yet
+        $query="SELECT chauffeurs.ref_Chauffeur, code_Chauffeur, numero_Matricule_Chauffeur, nom_Chauffeur, prenom_Chauffeur, `date_de_naissance_Chauffeur`, `categorie_Permis_Permis`, `numero_Permis_Chauffeur`, numero_Telephone_Chauffeur, `actifOuNon`, MAX(Date_Echéance_Certificat_Medical) AS echeanceVisite, MAX(Date_Echéance_Evaluation_Chauffeur) AS echeanceFormation FROM chauffeurs JOIN certificatsmedicaux ON chauffeurs.ref_Chauffeur=certificatsmedicaux.Ref_Chauffeur JOIN evaluationschauffeurs ON chauffeurs.ref_Chauffeur=evaluationschauffeurs.Ref_Chauffeur GROUP BY chauffeurs.ref_Chauffeur";
+        
+        $result=$db->read($query);
+        return  $result;
+        
+    }
+
+
+
+
+
+
 
     
 

@@ -113,37 +113,18 @@
 
     <div class="col shadow p-2" style="max-width: 11rem;">
         <div class=" card border-dark" >
-        <div class="card-header bg-light fw-bold text-danger">Experience Professionnelle.</div>
+        <div class="card-header bg-light fw-bold">Moyenne Gle Evaluations.</div>
         <div class="card-body text-dark row">
-        <h6 class="card-title">(Années de Conduite)</h6>                 
-            <span class="mt-2 mb-1 col badge bg-secondary fs-5">10/07/2023</span>    
+        <h6 class="card-title">(Moyenne des notes en %)</h6>                 
+            <span class="mt-2 mb-1 p-1 col badge bg-secondary fs-2"><?php echo $this->displayedData[8] ?></span>    
         </div>
        </div>  
        
        <div class=" mt-1 card border-dark" style="height:5rem">
-        <div class="card text-center bg-light fw-bold">Over Average</div>
-         <div class="text-dark row">
-        <h6 class="text-center fs-2">25</h6>                      
-        </div>    
+        <?php if($this->displayedData[8]<=60){echo '<svg class="mx-auto mt-3" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path fill="red" fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12s4.477 10 10 10s10-4.477 10-10ZM12 6.25a.75.75 0 0 1 .75.75v6a.75.75 0 0 1-1.5 0V7a.75.75 0 0 1 .75-.75ZM12 17a1 1 0 1 0 0-2a1 1 0 0 0 0 2Z" clip-rule="evenodd"/></svg>';}elseif($this->displayedData[8]<=80){echo '<svg class="mx-auto mt-3" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><g fill="none" stroke="orange" stroke-width="4"><path stroke-linejoin="round" d="M24 5L2 43h44L24 5Z" clip-rule="evenodd"/><path stroke-linecap="round" d="M24 35v1m0-17l.008 10"/></g></svg>';}else{echo '<svg class="mx-auto mt-3" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21" fill="#4CAF50"/><path fill="#CCFF90" d="M34.6 14.6L21 28.2l-5.6-5.6l-2.8 2.8l8.4 8.4l16.4-16.4z"/></svg>';} ?> 
         </div>
     </div>
-
-    <div class="col shadow p-2" style="max-width: 11rem;">
-        <div class=" card border-dark" >
-        <div class="card-header bg-light fw-bold text-danger">Experience Professionnelle.</div>
-        <div class="card-body text-dark row">
-        <h6 class="card-title">(Années de Conduite)</h6>                 
-            <span class="mt-2 mb-1 col badge bg-secondary fs-6">10/07/2023</span>    
-        </div>
-       </div>  
-       
-       <div class=" mt-1 card border-dark" style="height:5rem">
-        <div class="card text-center bg-light fw-bold">Over Average</div>
-         <div class="text-dark row">
-        <h6 class="text-center fs-1">25</h6>                      
-        </div>    
-        </div>
-    </div>
+   
 
 </div> 
 
