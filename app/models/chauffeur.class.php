@@ -143,10 +143,101 @@ class Chauffeur {
         $db=Database::getDbInstance();
 
         //  -- Select all the users that are not approved yet
-        $query="SELECT chauffeurs.ref_Chauffeur, code_Chauffeur, numero_Matricule_Chauffeur, nom_Chauffeur, prenom_Chauffeur, `date_de_naissance_Chauffeur`, `categorie_Permis_Permis`, `numero_Permis_Chauffeur`, numero_Telephone_Chauffeur, `actifOuNon`, MAX(Date_Echéance_Certificat_Medical) AS echeanceVisite, MAX(Date_Echéance_Evaluation_Chauffeur) AS echeanceFormation FROM chauffeurs JOIN certificatsmedicaux ON chauffeurs.ref_Chauffeur=certificatsmedicaux.Ref_Chauffeur JOIN evaluationschauffeurs ON chauffeurs.ref_Chauffeur=evaluationschauffeurs.Ref_Chauffeur GROUP BY chauffeurs.ref_Chauffeur";
+        $query="SELECT chauffeurs.ref_Chauffeur, code_Chauffeur, numero_Matricule_Chauffeur, nom_Chauffeur, prenom_Chauffeur, `date_de_naissance_Chauffeur`, `categorie_Permis_Permis`, `numero_Permis_Chauffeur`, numero_Telephone_Chauffeur, `camion_associe`, `actifOuNon`, MAX(Date_Echéance_Certificat_Medical) AS echeanceVisite, MAX(Date_Echéance_Evaluation_Chauffeur) AS echeanceFormation, TIMESTAMPDIFF(YEAR, date_de_naissance_Chauffeur, CURDATE()) AS age, TIMESTAMPDIFF(YEAR, date_Obtention_Permis_Chauffeur, CURDATE()) AS experience FROM chauffeurs JOIN certificatsmedicaux ON chauffeurs.ref_Chauffeur=certificatsmedicaux.Ref_Chauffeur JOIN evaluationschauffeurs ON chauffeurs.ref_Chauffeur=evaluationschauffeurs.Ref_Chauffeur GROUP BY chauffeurs.ref_Chauffeur ORDER BY nom_Chauffeur ASC";
         
         $result=$db->read($query);
         return  $result;
+        
+    }
+
+
+
+    public function add($post){
+
+        //-- Instanciation de la BD,
+        $db=Database::getDbInstance();
+
+
+         //1.2 -- Collecte des donnees recues 
+         $actifOuNon= "Inactif";
+         $code = trim($post['code']);
+         $matricule = trim($post['numero']);
+         $nom = trim($post['nom']);
+         $prenom = trim($post['prenom']);
+         $dateNaissance = trim($post['dateNaissance']);
+         $numeroPermis = trim($post['numeroPermis']);
+         $dateObtentionPermis = trim($post['dateObtentionPermis']);
+         $categoriePermis = trim($post['categoriePermis']);
+         $dateRecrutement = trim($post['dateRecrutement']);
+         $dateIntegration = trim($post['dateIntegration']);
+         $typeContrat = trim($post['typeContrat']);
+         $telephone = trim($post['telephone']);
+         $titulaireBackup = trim($post['titulaireBackup']);
+         $camion = trim($post['camion']);
+
+        //  -- Select all the users that are not approved yet
+        $query ="INSERT INTO chauffeurstests(
+            code_Chauffeur,
+            numero_Matricule_Chauffeur,
+            nom_Chauffeur,
+            prenom_Chauffeur,
+            date_de_naissance_Chauffeur,
+            numero_Permis_Chauffeur,
+            date_Obtention_Permis_Chauffeur,
+            categorie_Permis_Permis,
+            date_Recrutement_Chauffeur,
+            date_dIntegration_Chauffeur,
+            type_Contrat_Chauffeur,
+            numero_Telephone_Chauffeur,
+            titulaire_backup,
+            camion_associe,
+            actifOuNon) 
+            VALUES(
+                :code_Chauffeur,
+                :numero_Matricule_Chauffeur,
+                :nom_Chauffeur,
+                :prenom_Chauffeur,
+                :date_de_naissance_Chauffeur,
+                :numero_Permis_Chauffeur,
+                :date_Obtention_Permis_Chauffeur,
+                :categorie_Permis_Permis,
+                :date_Recrutement_Chauffeur,
+                :date_dIntegration_Chauffeur,
+                :type_Contrat_Chauffeur,
+                :numero_Telephone_Chauffeur,
+                :titulaire_backup,
+                :camion_associe,
+                :actifOuNon)";
+        
+       
+        $data["code_Chauffeur"]= $code;
+        $data["numero_Matricule_Chauffeur"]= $matricule;
+        $data["nom_Chauffeur"]= $nom;
+        $data["prenom_Chauffeur"]= $prenom;
+        $data["date_de_naissance_Chauffeur"]= $dateNaissance;
+        $data["numero_Permis_Chauffeur"]= $numeroPermis;
+        $data["date_Obtention_Permis_Chauffeur"]= $dateObtentionPermis;
+        $data["categorie_Permis_Permis"]= $categoriePermis;
+        $data["date_Recrutement_Chauffeur"]= $dateRecrutement;
+        $data["date_dIntegration_Chauffeur"]= $dateIntegration;
+        $data["type_Contrat_Chauffeur"]= $typeContrat;
+        $data["numero_Telephone_Chauffeur"]= $telephone;
+        $data["titulaire_backup"]= $titulaireBackup;
+        $data["camion_associe"]= $camion;
+        $data["actifOuNon"]= $actifOuNon;
+       
+        $result = $db->write($query,$data);
+        if ($result === true) {
+           return "sucsess";
+        } else {
+            return "false";
+        }
+ 
+        /*
+        // Redirection a la page de Login
+        header("location:".ROOT."operationschauffeurs/"); 
+        exit;
+*/
         
     }
 

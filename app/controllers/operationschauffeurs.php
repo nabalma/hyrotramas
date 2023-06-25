@@ -20,6 +20,13 @@ class OperationsChauffeurs extends Controller{
 
         
 
+         if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["submit_nouveau_chauffeur"])){
+
+          //1.1- Execution de la fonction register de la classe Driver
+          $add_chauffeur=$driver->add($_POST);
+          $this->displayedData[]=$add_chauffeur; //Age moyen : Index 1 du displayData
+      }
+
 
         // *** - Affichage de la vue
         //--------------------------------------------------------------------------------------------
