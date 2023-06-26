@@ -152,7 +152,7 @@ class Chauffeur {
 
 
 
-    public function add($post){
+    public function add_Driver($post){
 
         //-- Instanciation de la BD,
         $db=Database::getDbInstance();
@@ -228,7 +228,7 @@ class Chauffeur {
        
         $result = $db->write($query,$data);
         if ($result === true) {
-           return "sucsess";
+           return "success";
         } else {
             return "false";
         }

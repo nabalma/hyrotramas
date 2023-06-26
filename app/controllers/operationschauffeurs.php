@@ -13,7 +13,7 @@ class OperationsChauffeurs extends Controller{
 
          //1.0- Importer le fichier modele Chauffeur
          $driver = $this->load_model("Chauffeur"); //Attention, le parametre a provider ici doit etre entre quote (cest un string ) et doit commencer par une majuscule
-
+         $certificat = $this->load_model("Certificatsmedicaux"); //Attention, le parametre a provider ici doit etre entre quote (cest un string ) et doit commencer par une majuscule
 
          $listeChauffeurs=$driver->get_Drivers_details();
          $this->displayedData[]=$listeChauffeurs; //Age moyen : Index 0 du displayData
@@ -23,9 +23,19 @@ class OperationsChauffeurs extends Controller{
          if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["submit_nouveau_chauffeur"])){
 
           //1.1- Execution de la fonction register de la classe Driver
-          $add_chauffeur=$driver->add($_POST);
+          $add_chauffeur=$driver->add_Driver($_POST);
           $this->displayedData[]=$add_chauffeur; //Age moyen : Index 1 du displayData
+    
       }
+
+
+      if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["submit_nouveau_certificat"])){
+
+        //1.1- Execution de la fonction register de la classe Driver
+        $add_certificat=$certificat->add_Visite($_POST);
+        $this->displayedData[]=$add_certificat; //Age moyen : Index 2 du displayData
+    }
+
 
 
         // *** - Affichage de la vue

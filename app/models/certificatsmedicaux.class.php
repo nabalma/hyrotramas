@@ -27,6 +27,33 @@ class Certificatsmedicaux {
     }
 
 
+  
+
+
+    public function add_Visite($post){
+
+        //-- Instanciation de la BD,
+        $db=Database::getDbInstance();
+
+        // Collecte des données reçues
+    $dateCert = date('Y-m-d', strtotime($post['dateCertificat']));
+    $dateEcheanceCert = date('Y-m-d', strtotime($post['dateEcheanceCertificat']));
+    $refChauf = $post['refChauffeur'];
+
+    // Requête d'insertion avec des valeurs formatées
+    $query = "INSERT INTO certificatsmedicauxtests (Date_Certificat_Medical, Date_Echéance_Certificat_Medical, Ref_Chauffeur) VALUES ('$dateCert', '$dateEcheanceCert', '$refChauf')";
+
+    $resultat = $db->write($query);
+
+    if ($resultat === true) {
+        return "success";
+    } else {
+        return "false";
+    }
+  
+
+    }
+
 
 
 
