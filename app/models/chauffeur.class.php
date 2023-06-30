@@ -8,7 +8,7 @@ class Chauffeur {
             $db=Database::getDbInstance();
 
             //  -- Select all the users that are not approved yet 
-            $query="SELECT * FROM chauffeurs";
+            $query="SELECT * FROM chauffeurstests";
             $result=$db->read($query);
             return  $result ;
     }
@@ -19,7 +19,7 @@ class Chauffeur {
         $db=Database::getDbInstance();
 
         //  -- Select all the users that are not approved yet 
-        $query="SELECT * FROM chauffeurs WHERE ref_Chauffeur=$refChauffeur";
+        $query="SELECT * FROM chauffeurstests WHERE ref_Chauffeur=$refChauffeur";
         $result=$db->read($query);
         return  $result ;
         
@@ -30,7 +30,7 @@ class Chauffeur {
         $db=Database::getDbInstance();
 
         //  -- Select all the users that are not approved yet 
-        $query="SELECT Date_Echéance_Evaluation_Chauffeur FROM evaluationschauffeurs WHERE ref_Chauffeur=$refChauffeur ORDER BY Date_Echéance_Evaluation_Chauffeur DESC LIMIT 1";
+        $query="SELECT Date_Echéance_Evaluation_Chauffeur FROM evaluationschauffeurstests WHERE ref_Chauffeur=$refChauffeur ORDER BY Date_Echéance_Evaluation_Chauffeur DESC LIMIT 1";
         $result=$db->read($query);
         return  $result ;
         
@@ -42,7 +42,7 @@ class Chauffeur {
         $db=Database::getDbInstance();
 
         //  -- Select all the users that are not approved yet 
-        $query="SELECT Date_Echéance_Certificat_Medical FROM certificatsmedicaux WHERE Ref_Chauffeur=$refChauffeur ORDER BY Date_Echéance_Certificat_Medical DESC LIMIT 1";
+        $query="SELECT Date_Echéance_Certificat_Medical FROM certificatsmedicauxtests WHERE Ref_Chauffeur=$refChauffeur ORDER BY Date_Echéance_Certificat_Medical DESC LIMIT 1";
         $result=$db->read($query);
         return  $result ;
         
@@ -54,7 +54,7 @@ class Chauffeur {
         $db=Database::getDbInstance();
 
         //  -- Select all the users that are not approved yet 
-        $query="SELECT * FROM chauffeurs WHERE actifOuNon='Actif'";
+        $query="SELECT * FROM chauffeurstests WHERE actifOuNon='Actif'";
         $result=$db->read($query);
         return  count($result) ;
         
@@ -66,7 +66,7 @@ class Chauffeur {
         $db=Database::getDbInstance();
 
         //  -- Select all the users that are not approved yet 
-        $query="SELECT * FROM chauffeurs WHERE actifOuNon='Actif'";
+        $query="SELECT * FROM chauffeurstests WHERE actifOuNon='Actif'";
         $result=$db->read($query);
         return  count($result) ;
         
@@ -77,7 +77,7 @@ class Chauffeur {
         $db=Database::getDbInstance();
 
         //  -- Select all the users that are not approved yet 
-        $query="SELECT date_de_naissance_Chauffeur FROM chauffeurs WHERE actifOuNon='Actif'";
+        $query="SELECT date_de_naissance_Chauffeur FROM chauffeurstests WHERE actifOuNon='Actif'";
         $result=$db->read($query);
         
         
@@ -103,7 +103,7 @@ class Chauffeur {
         $db=Database::getDbInstance();
 
         //  -- Select all the users that are not approved yet 
-        $query="SELECT date_Obtention_Permis_Chauffeur FROM chauffeurs WHERE actifOuNon='Actif'";
+        $query="SELECT date_Obtention_Permis_Chauffeur FROM chauffeurstests WHERE actifOuNon='Actif'";
         $result=$db->read($query);
         
         
@@ -131,7 +131,7 @@ class Chauffeur {
         $db=Database::getDbInstance();
 
         //  -- Select all the users that are not approved yet
-        $query="SELECT date_Obtention_Permis_Chauffeur FROM chauffeurs WHERE (((CURDATE()-date_Obtention_Permis_Chauffeur)/366) >=$cible) AND actifOuNon='Actif' GROUP BY Ref_Chauffeur";
+        $query="SELECT date_Obtention_Permis_Chauffeur FROM chauffeurstests WHERE (((CURDATE()-date_Obtention_Permis_Chauffeur)/366) >=$cible) AND actifOuNon='Actif' GROUP BY Ref_Chauffeur";
         $result=$db->read($query);
         return  count($result);
         
@@ -143,7 +143,7 @@ class Chauffeur {
         $db=Database::getDbInstance();
 
         //  -- Select all the users that are not approved yet
-        $query="SELECT chauffeurs.ref_Chauffeur, code_Chauffeur, numero_Matricule_Chauffeur, nom_Chauffeur, prenom_Chauffeur, `date_de_naissance_Chauffeur`, `categorie_Permis_Permis`, `numero_Permis_Chauffeur`, numero_Telephone_Chauffeur, `camion_associe`, `actifOuNon`, MAX(Date_Echéance_Certificat_Medical) AS echeanceVisite, MAX(Date_Echéance_Evaluation_Chauffeur) AS echeanceFormation, TIMESTAMPDIFF(YEAR, date_de_naissance_Chauffeur, CURDATE()) AS age, TIMESTAMPDIFF(YEAR, date_Obtention_Permis_Chauffeur, CURDATE()) AS experience FROM chauffeurs JOIN certificatsmedicaux ON chauffeurs.ref_Chauffeur=certificatsmedicaux.Ref_Chauffeur JOIN evaluationschauffeurs ON chauffeurs.ref_Chauffeur=evaluationschauffeurs.Ref_Chauffeur GROUP BY chauffeurs.ref_Chauffeur ORDER BY nom_Chauffeur ASC";
+        $query="SELECT chauffeurstests.ref_Chauffeur, code_Chauffeur, numero_Matricule_Chauffeur, nom_Chauffeur, prenom_Chauffeur, `date_de_naissance_Chauffeur`, `categorie_Permis_Permis`, `numero_Permis_Chauffeur`, numero_Telephone_Chauffeur, `camion_associe`, `actifOuNon`, MAX(Date_Echéance_Certificat_Medical) AS echeanceVisite, MAX(Date_Echéance_Evaluation_Chauffeur) AS echeanceFormation, TIMESTAMPDIFF(YEAR, date_de_naissance_Chauffeur, CURDATE()) AS age, TIMESTAMPDIFF(YEAR, date_Obtention_Permis_Chauffeur, CURDATE()) AS experience FROM chauffeurstests JOIN certificatsmedicauxtests ON chauffeurstests.ref_Chauffeur=certificatsmedicauxtests.Ref_Chauffeur JOIN evaluationschauffeurstests ON chauffeurstests.ref_Chauffeur=evaluationschauffeurstests.Ref_Chauffeur GROUP BY chauffeurstests.ref_Chauffeur ORDER BY nom_Chauffeur ASC";
         
         $result=$db->read($query);
         return  $result;
@@ -242,8 +242,56 @@ class Chauffeur {
     }
 
 
+    public function get_Driver_Statut($post){
+        //-- Instanciation de la BD,
+        $db=Database::getDbInstance();
+
+        $driver = $post["refChauf"];
+       
+        if($driver!="Choisir Chauffeur..."){
+            $query="SELECT actifOuNon FROM chauffeurstests WHERE ref_Chauffeur=$driver";
+        $result=$db->read($query);
+        $statut = $result[0];
+        return  $statut;   
+        }
+            
+        
+    }
 
 
+    public function toggle_Driver_Statut($post){
+        //-- Instanciation de la BD,
+        $db=Database::getDbInstance();
+
+       $statut="";
+    
+         $driver = $post["refChauf"];
+       
+        if($driver!="Choisir Chauffeur..."){
+
+            $query1="SELECT actifOuNon FROM chauffeurstests WHERE ref_Chauffeur=$driver";
+            $result=$db->read($query1);
+            $statut = $result[0]["actifOuNon"];
+     
+            if($statut=="Actif"){
+                $query="UPDATE chauffeurstests SET actifOuNon = 'Inactif' WHERE ref_Chauffeur= $driver";
+            }
+            elseif($statut=="Inactif"){
+                $query="UPDATE chauffeurstests SET actifOuNon = 'Actif' WHERE ref_Chauffeur= $driver";
+            }
+               
+            $result=$db->read($query);
+
+       
+            $query3="SELECT actifOuNon FROM chauffeurstests WHERE ref_Chauffeur=$driver";
+            $result=$db->read($query3);
+            $statut = $result[0];
+            return  $statut;   
+       
+ 
+         }
+
+    }
 
 
 

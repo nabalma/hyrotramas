@@ -36,42 +36,176 @@
             </div>
             <ul class="list-group list-group-flush">
 
-            <?php if (isset($_POST["submit_nouvelle_formation"]) && isset($this->displayedData[1]) && $this->displayedData[1]==="success") : ?>
+            <?php if (isset($_POST["submit_nouvel_evaluation"]) && isset($this->displayedData["ajout_nouvel_evaluation"]) && $this->displayedData["ajout_nouvel_evaluation"]==="success") : ?>
             <li class="list-group-item">
                     <div class="row gx-1">
                             <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-                                <strong>Succès!</strong> Formation bien ajoutée
+                                <span>Evaluation bien ajoutée !</span> 
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                     </div>
             </li>
             <?php endif; ?>
 
-                <li class="list-group-item d-flex">
-                    <button class="btn btn-secondary w-100">
+
+
+            <li class="list-group-item">
+                    <div class="row gx-1">
+                    <div class="row">   
+       <div class="col">
+        <div class="row">
+           <!-- Button trigger modal -->          
+           <button type="button" class="mb-1 btn btn-secondary" data-bs-toggle="modal" data-bs-target="#evaluation">
                         <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.8rem" viewBox="0 0 20 20"><path fill="currentColor" d="M11 9V5H9v4H5v2h4v4h2v-4h4V9h-4zm-1 11a10 10 0 1 1 0-20a10 10 0 0 1 0 20z"/>
                         </svg>
                         Nouvelle formation
                     </button>
+
+           <!-- Modal -->
+       <div class="modal fade" id="evaluation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="evaluationLabel" aria-hidden="true">
+           <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h5 class="modal-title" id="evaluationLabel">Inscription Evaluation</h5>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   </div>
+                   <div class="modal-body">
+
+                       <form action="" method="post">
+                       
+                           <div class="card p-1 border border-1 shadow-lg p-2 mb-5 bg-body rounded">
+
+                               <div class="row gx-0 mb-1">           
+                                   <div class="col">
+                                       <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon1" style="width:6rem">Num. Doc</span>
+                                            <input id="numdoc" name="numdoc" type="text" class="form-control" placeholder="Numéro Doc" aria-label="Username" aria-describedby="basic-addon1">                                              
+                                       </div>
+                                   </div>
+                                   <div class="col">
+                                       <div class="input-group">
+                                           <span class="input-group-text" id="basic-addon1" style="width:6rem">Ref.</span>
+                                           <input id="reference" name="reference" type="text" class="form-control" placeholder="Reference" aria-label="Username" aria-describedby="basic-addon1" disabled>
+                                       </div>
+                                   </div>
+                               </div>
+                                                  
+                                <div class="gx-0 row mb-1">  
+                                   <div class="col input-group">
+                                  
+                                        <div class="input-group">
+                                            <label class="input-group-text" for="refChauffeur">Choisir Chauffeur</label>
+                                            <select class="form-select" id="refChauffeur" name="refChauffeur" >
+                                                        <option selected>Choose...</option>
+                                                <?php foreach ($this->displayedData["listeChauffeur"] as $row) : ?>                             
+                                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo $row['prenom_Chauffeur']; ?></option>                                                       
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                   </div>
+                                  
+                               </div>
+                   
+                               <div class="gx-0 row mb-1">  
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Date     </span>
+                                       <input id="dateEvaluation" name="dateEvaluation" type="date" class="form-control" placeholder="Date " aria-label="Username" aria-describedby="basic-addon1">
+                                   </div>
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon2" style="width:6rem">Echéance</span>
+                                       <input id="dateEcheanceEvaluation" name="dateEcheanceEvaluation" type="date" class="form-control" placeholder="Echéance" aria-label="Date Obtention" aria-describedby="basic-addon2">
+                                   </div>
+                               </div>
+                               
+                               
+                               <div class="gx-0 row mb-1">  
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Catégorie     </span>
+
+                                       <select class="form-select" id="categorieEvaluation" name="categorieEvaluation" >
+                                                        <option selected>Choose...</option>
+                                                <?php foreach ($this->displayedData["listeCatEvaluation"] as $row) : ?>                             
+                                                    <option value="<?php echo $row['Ref_Cat_Evaluation_Chauffeur']; ?>"><?php echo $row['Designation_Cat_Evaluation_Chauffeur']; ?></option>                                                       
+                                                <?php endforeach; ?>
+                                        </select>
+                                   </div>
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon2" style="width:6rem">Sous Catégorie</span>
+                                      
+                                       <select class="form-select" id="sousCategorieEvaluation" name="sousCategorieEvaluation" >
+                                                        <option selected>Choose...</option>
+                                                <?php foreach ($this->displayedData["listeSousCatEvaluation"] as $row) : ?>                             
+                                                    <option value="<?php echo $row['Ref_Sous_Cat_Eval_Chauffeur']; ?>"><?php echo $row['Designation_Sous_Cat_Eval_Chauffeur']; ?></option>                                                       
+                                                <?php endforeach; ?>
+                                        </select>
+                                   </div>
+                               </div>  
+
+
+                               <div class="gx-0 row mb-1">  
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Note     </span>
+                                       <input id="noteEvaluation" name="noteEvaluation" type="number" class="form-control" placeholder="Note(%) " aria-label="Username" aria-describedby="basic-addon1">
+                                   </div>
+                                   <div class="col input-group">
+                                       <span class="input-group-text" id="basic-addon2" style="width:6rem">Décision</span>
+                                      
+                                       <select class="form-select" id="decisionEvaluation" name="decisionEvaluation" >
+                                                        <option selected>Choose...</option>
+                                                <?php foreach ($this->displayedData["listeDecisionEvaluation"] as $row) : ?>                             
+                                                    <option value="<?php echo $row['Ref_Decision_Evaluation']; ?>"><?php echo $row['Designation_Decision_Evaluation'] ?></option>                                                       
+                                                <?php endforeach; ?>
+                                        </select>
+                                       
+                                   </div>
+                               </div> 
+
+                               <div class="gx-0 row mb-1">  
+                                   <div class="col input-group">
+                                        <div class="input-group">
+                                        <label class="input-group-text" for="commentairesEvaluation">Commentaires</label>
+                                            <input id="commentairesEvaluation" name="commentairesEvaluation" type="text" class="form-control" placeholder="Commentaires" aria-label="Date Obtention" aria-describedby="basic-addon2">                                            
+                                        </div>
+                                   </div>
+                                  
+                               </div>
+                               
+                             
+                           </div>
+
+                           <div class="modal-footer">
+                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                               <button  type="submit" name="submit_nouvel_evaluation" class="btn btn-outline-primary">Créer Visite Médicale</button>
+                           </div>
+
+                       </form>
+           
+                   </div>
+               </div>
+           </div>
+       </div>
+       </div>
+   </div>   
+   </div>
+                    </div>
                 </li>
+
+
+
                 <li class="list-group-item">
                 <div class="mb-1 text-center fw-bold" style="color:#23181C;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><path fill="#36028C" d="m15.504 13.616l-3.79-3.223c-.392-.353-.811-.514-1.149-.499a6 6 0 1 0-.672.672c-.016.338.146.757.499 1.149l3.223 3.79c.552.613 1.453.665 2.003.115s.498-1.452-.115-2.003zM6 10a4 4 0 1 1 0-8a4 4 0 0 1 0 8z"/></svg>
                         Selectionner une Formation
                     </div>
                     <form class="">                       
-                        <select class="mb-1 form-select btn btn-outline-secondary" aria-label="Default select example">
-                            <option selected>Selectionner Transporteur</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                           
+                        <select class="mb-1 form-select btn btn-outline-secondary" id="refChauffeur" name="refChauffeur" >
+                                                        <option selected>Selectionner Chauffeur</option>
+                                                <?php foreach ($this->displayedData["listeChauffeur"] as $row) : ?>                             
+                                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo $row['prenom_Chauffeur']; ?></option>                                                       
+                                                <?php endforeach; ?>
                         </select>
-                        <select class="mb-1 form-select btn btn-outline-secondary" aria-label="Default select example">
-                            <option selected>Selectionner Chauffeur</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+                       
                         <div class="row d-flex justify-content-center" >
                         <div style="width:18rem"><button class="w-100 btn btn-outline-primary">Consulter</button></div>                           
                         </div>
@@ -93,11 +227,11 @@
             </div>
             <ul class="list-group list-group-flush">
 
-            <?php if (isset($_POST["submit_nouveau_certificat"]) && isset($this->displayedData[1]) && $this->displayedData[1]==="success") : ?>
+            <?php if (isset($_POST["submit_nouveau_certificat"]) && isset($this->displayedData["ajout_nouveau_certificat"]) && $this->displayedData["ajout_nouveau_certificat"]==="success") : ?>
             <li class="list-group-item">
                     <div class="row gx-1">
-                            <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-                                <strong>Succès!</strong> Aptitude bien ajoutée
+                            <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">                               
+                                <span>Aptitude bien ajoutée !</span> 
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                     </div>
@@ -149,13 +283,13 @@
                                   
                                         <div class="input-group">
                                             <label class="input-group-text" for="refChauffeur">Choisir Chauffeur</label>
-                                                <select class="form-select" id="refChauffeur" name="refChauffeur" >
+                                            <select class="form-select" id="refChauffeur" name="refChauffeur" >
                                                         <option selected>Choose...</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                </select>
-                                                </div>
+                                                <?php foreach ($this->displayedData["listeChauffeur"] as $row) : ?>                             
+                                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo $row['prenom_Chauffeur']; ?></option>                                                       
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
                                    </div>
                                   
                                </div>
@@ -202,17 +336,12 @@
                         Selectionner une Aptitude
                     </div>
                     <form class="">                       
-                        <select class="mb-1 form-select" aria-label="Default select example">
-                            <option selected>Selectionner Transporteur</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <select class="mb-1 form-select" aria-label="Default select example">
+                       
+                    <select class="mb-1 form-select btn btn-outline-secondary" id="refChauffeur" name="refChauffeur" >
                             <option selected>Selectionner Chauffeur</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                                <?php foreach ($this->displayedData["listeChauffeur"] as $row) : ?>                             
+                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo $row['prenom_Chauffeur']; ?></option>                                                       
+                                <?php endforeach; ?>
                         </select>
                         <div class="row d-flex justify-content-center" >
                         <div style="width:18rem"><button class="w-100 btn btn-outline-primary">Consulter</button></div>                           
@@ -235,11 +364,11 @@
             <ul class="list-group list-group-flush">
            
 
-            <?php if (isset($_POST["submit_nouveau_chauffeur"]) && isset($this->displayedData[1]) && $this->displayedData[1]==="success") : ?>
+            <?php if (isset($_POST["submit_nouveau_chauffeur"]) && isset($this->displayedData["ajout_nouveau_chauffeur"]) && $this->displayedData["ajout_nouveau_chauffeur"]==="success") : ?>
             <li class="list-group-item">
                     <div class="row gx-1">
                         <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-                            <strong>Succès!</strong> Chauffeur bien ajouté
+                            <span>Chauffeur bien ajoutée !</span> 
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     </div>
@@ -389,24 +518,204 @@
                 </li>
                 <li class="list-group-item">
                     <div class="row gx-1">
-                        <div class="col"><button class="btn btn-outline-secondary w-100">Permis</button></div>
-                        <div class="col"><button class="btn btn-outline-secondary w-100">Contrats</button></div>
+                <!-- Button trigger modal --> 
+                    <div class="col card border border-1 border-secondary shadow-lg p-1 bg-body rounded d-flex justify-content-center" style="width: 20rem;">
+                        <button class="btn btn-secondary w-100 text-center" type="button" data-bs-toggle="modal" data-bs-target="#cateval">
+                            CAT EVAL
+                        </button>
+                    </div>
+                <!-- Modal -->
+                <div class="modal fade" id="cateval" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="catevalLabel" aria-hidden="true">
+           <div class="modal-dialog modal-sm">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h5 class="modal-title" id="catevalLabel">Catégories Evaluations</h5>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   </div>
+                   <div class="modal-body">                      
+                           <div class="card p-1 border border-1 shadow-lg p-2 mb-1 bg-body rounded">
+                               
+                           <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col">#</th>                                           
+                                                <th scope="col">Code</th>
+                                                <th scope="col">Désignation</th>                                              
+                                                </tr>
+                                            </thead>
+                                            <tbody>   
+
+                                                <?php foreach ($this->displayedData["listeCatEvaluation"] as $row) : ?>
+                                                <tr>
+                                                    <th scope="row"><?php echo $row['Ref_Cat_Evaluation_Chauffeur']; ?></td>
+                                                    <td><?php echo $row['Code_Cat_Evaluation_Chauffeur']; ?></td>
+                                                    <td><?php echo $row['Designation_Cat_Evaluation_Chauffeur']; ?></td>                                                    
+                                                </tr>
+                                                <?php endforeach; ?>
+
+                                            </tbody>
+                                    </table>               
+                                                               
+                           </div>
+                    
+           
+                   </div>
+               </div>
+           </div>
+       </div>
+                             
+                    
+                    <!-- Button trigger modal --> 
+                    <div class="col card border border-1 border-secondary shadow-lg p-1 bg-body rounded d-flex justify-content-center" style="width: 20rem;">
+                        <button class="btn btn-secondary w-100 text-center" type="button" data-bs-toggle="modal" data-bs-target="#catsseval">
+                            SS CAT EVAL
+                        </button>
+                    </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="catsseval" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="catssevalLabel" aria-hidden="true">
+           <div class="modal-dialog modal-sm">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h5 class="modal-title" id="catssevalLabel">Catégories Evaluations</h5>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   </div>
+                   <div class="modal-body">                      
+                           <div class="card p-1 border border-1 shadow-lg p-2 mb-1 bg-body rounded">
+                               
+                           <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col">#</th>                                           
+                                                <th scope="col">Code</th>
+                                                <th scope="col">Désignation</th>                                              
+                                                </tr>
+                                            </thead>
+                                            <tbody>   
+
+                                                <?php foreach ($this->displayedData["listeSousCatEvaluation"] as $row) : ?>
+                                                <tr>
+                                                    <th scope="row"><?php echo $row['Ref_Sous_Cat_Eval_Chauffeur']; ?></td>
+                                                    <td><?php echo $row['Code_Sous_Cat_Eval_Chauffeur']; ?></td>
+                                                    <td><?php echo $row['Designation_Sous_Cat_Eval_Chauffeur']; ?></td>                                                    
+                                                </tr>
+                                                <?php endforeach; ?>
+
+                                            </tbody>
+                                    </table>               
+                                                               
+                           </div>
+                    
+           
+                   </div>
+               </div>
+           </div>
+       </div>
+
+                       
                     </div>
                 </li>
                 <li class="list-group-item">
                     <div class="row gx-1">
-                        <div class="col"><button class="btn btn-outline-secondary w-100">Evaluations</button></div>
-                        <div class="col"><button class="btn btn-outline-secondary w-100">Aptitudes</button></div>
+
+                     <!-- Button trigger modal --> 
+                     <div class="col card border border-1 border-secondary shadow-lg p-1 bg-body rounded d-flex justify-content-center" style="width: 20rem;">
+                        <button class="btn btn-secondary w-100 text-center" type="button" data-bs-toggle="modal" data-bs-target="#catpermis">
+                            CAT PERMIS
+                        </button>
                     </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row gx-1">
-                        <div class="col"><button class="btn btn-outline-secondary w-100">Décision</button></div>
-                        <div class="col"><button class="btn btn-outline-secondary w-100">Titl-BackUp?</button></div>
+                               <!-- Modal -->
+                               <div class="modal fade" id="catpermis" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="catpermisLabel" aria-hidden="true">
+           <div class="modal-dialog modal-sm">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h5 class="modal-title" id="catpermisLabel">Catégories Evaluations</h5>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   </div>
+                   <div class="modal-body">                      
+                           <div class="card p-1 border border-1 shadow-lg p-2 mb-1 bg-body rounded">
+                               
+                           <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col">#</th>                                           
+                                                <th scope="col">Code</th>
+                                                <th scope="col">Désignation</th>                                              
+                                                </tr>
+                                            </thead>
+                                            <tbody>   
+
+                                                <?php foreach ($this->displayedData["listeCatPermis"] as $row) : ?>
+                                                <tr>
+                                                    <th scope="row"><?php echo $row['Ref_Cat_Permis']; ?></td>
+                                                    <td><?php echo $row['Code_Cat_Permis']; ?></td>
+                                                    <td><?php echo $row['Designation_Cat_Permis']; ?></td>                                                    
+                                                </tr>
+                                                <?php endforeach; ?>
+
+                                            </tbody>
+                                    </table>               
+                                                               
+                           </div>
+                    
+           
+                   </div>
+               </div>
+           </div>
+    </div>
+
+                    <!-- Button trigger modal --> 
+                     <div class="col card border border-1 border-secondary shadow-lg p-1 bg-body rounded d-flex justify-content-center" style="width: 20rem;">
+                        <button class="btn btn-secondary w-100 text-center" type="button" data-bs-toggle="modal" data-bs-target="#titlbackup">
+                        TITL-BACKUP
+                        </button>
                     </div>
-                </li>
+                               <!-- Modal -->
+                               <div class="modal fade" id="titlbackup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="titlbackupLabel" aria-hidden="true">
+           <div class="modal-dialog modal-sm">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h5 class="modal-title" id="titlbackupLabel">Catégories Evaluations</h5>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   </div>
+                   <div class="modal-body">                      
+                           <div class="card p-1 border border-1 shadow-lg p-2 mb-1 bg-body rounded">
+                               
+                           <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col">#</th>                                           
+                                                <th scope="col">Code</th>
+                                                <th scope="col">Désignation</th>                                              
+                                                </tr>
+                                            </thead>
+                                            <tbody>   
+
+                                                <?php foreach ($this->displayedData["listeTitulBackUp"] as $row) : ?>
+                                                <tr>
+                                                    <th scope="row"><?php echo $row['Ref_TitulaireBackUp']; ?></td>
+                                                    <td><?php echo $row['Code_TitulaireBackUp']; ?></td>
+                                                    <td><?php echo $row['Designation_TitulaireBackUp']; ?></td>                                                    
+                                                </tr>
+                                                <?php endforeach; ?>
+
+                                            </tbody>
+                                    </table>               
+                                                               
+                           </div>
+                    
+           
+                   </div>
+               </div>
+           </div>
+    </div>
+
+
+                        
+                    </div>
+                </li>                
             </ul>           
         </div>
+        
 
         </div>
 
@@ -431,18 +740,14 @@
                         Selectionner une Carte
                     </div>
                     <form class="">                       
-                        <select class="mb-1 form-select" aria-label="Default select example">
-                            <option selected>Selectionner Transporteur</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <select class="mb-1 form-select" aria-label="Default select example">
+                  
+                    <select class="mb-1 form-select btn btn-outline-secondary" id="refChauffeur" name="refChauffeur" >
                             <option selected>Selectionner Chauffeur</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                                <?php foreach ($this->displayedData["listeChauffeur"] as $row) : ?>                             
+                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo $row['prenom_Chauffeur']; ?></option>                                                       
+                                <?php endforeach; ?>
                         </select>
+                   
                         <div class="row d-flex justify-content-center" >
                         <div style="width:18rem"><button class="w-100 btn btn-outline-primary">Consulter</button></div>                           
                         </div>
@@ -468,8 +773,9 @@
     </div>
 
     <div class="row ms-5">
+    <div class="col">
            <!-- Button trigger modal -->          
-               <button type="button" class="d-flex justify-content-start w-25 mb-1 btn btn-secondary" data-bs-toggle="modal" data-bs-target="#listechauffeurs">
+               <button type="button" class="d-flex justify-content-start mb-1 btn btn-secondary" data-bs-toggle="modal" data-bs-target="#listechauffeurs">
                <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.8rem" viewBox="0 0 16 16"><path fill="currentColor" d="M0 0h4v3H0V0zm0 4h4v3H0V4zm0 8h4v3H0v-3zm0-4h4v3H0V8zm5-8h11v3H5V0zm0 4h11v3H5V4zm0 8h11v3H5v-3zm0-4h11v3H5V8z"/>
             </svg>
                         <span class="ms-3">Liste des chauffeurs</span>
@@ -505,7 +811,7 @@
                                             </thead>
                                             <tbody>   
 
-                                                <?php foreach ($this->displayedData[0] as $row) : ?>
+                                                <?php foreach ($this->displayedData["listeChauffeur"] as $row) : ?>
                                                 <tr>
                                                     <th scope="row"><?php echo $row['ref_Chauffeur']; ?></td>
                                                     <td><?php echo $row['nom_Chauffeur']; ?></td>
@@ -600,11 +906,67 @@
                </div>
            </div>
        </div>
-      
+       </div>
+
+       <div class="col">
+            <div class="row">
+                <div class="col-2"></div>               
+                <div class="col-6">
+
+                    <form action="" method="post">
+                    <div class="input-group">
+                        <select class="form-select" id="statut" name="refChauf">
+                            <option selected>Choisir Chauffeur...</option>
+                            <?php foreach ($this->displayedData["listeChauffeur"] as $row) : ?>                             
+                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo $row['prenom_Chauffeur']; ?></option>                                                       
+                            <?php endforeach; ?>
+                        </select>
+                        <button type="submit" name = "get_statut" class="border-0 btn-secondary">Statut</button>
+                       
+                        <button type="submit" name = "toggle_statut" class="btn btn-outline-danger border border-1 <?php if(1==1){echo "btn-danger text-danger";} ?>" >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 15 16"><path fill="black" d="M7.5 10c-.28 0-.5-.22-.5-.5v-7c0-.28.22-.5.5-.5s.5.22.5.5v7c0 .28-.22.5-.5.5Z"/><path fill="black" d="M7.5 15C3.92 15 1 12.18 1 8.72c0-2.41 1.46-4.64 3.72-5.68c.25-.11.55 0 .66.25c.11.25 0 .55-.25.66c-1.91.87-3.14 2.74-3.14 4.77c0 2.91 2.47 5.28 5.5 5.28s5.5-2.37 5.5-5.28c0-2.02-1.23-3.9-3.14-4.77a.502.502 0 0 1-.25-.66c.11-.25.41-.36.66-.25c2.26 1.03 3.72 3.26 3.72 5.68c0 3.46-2.92 6.28-6.5 6.28Z"/>
+                                </svg>
+                        </button> 
+                    </form>    
+                        
+                    <div class="col-1 text-center mt-2 visually-hidden"><?php if(isset($_POST['get_statut']) && $_POST['refChauf']!="Choisir Chauffeur..."){echo $this->displayedData[6]["actifOuNon"] ;}?></div>
+
+                        
+                </div>
+
+                </div>
+                <div class="col-3">
+                    
+                    <div class="row gx-0">
+                    <?php if ((isset($_POST["refChauf"]) && $_POST["refChauf"]=="Choisir Chauffeur...")){
+                        echo '<div class="p-1 mt-1 w-100 alert alert-danger text-center" role="alert">
+                            Indiquer Chauffeur
+                        </div>';
+                    }                     
+                        elseif (((isset($this->displayedData["get_statut"]["actifOuNon"]) && $this->displayedData["get_statut"]["actifOuNon"]=='Actif') || (isset($_POST['toggle_statut']) && $this->displayedData['toggle_statut']["actifOuNon"]=='Actif'))){
+                            echo'<div class="col p-1 alert alert-success text-center" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1.7rem" height="1.7rem" viewBox="0 0 48 48"><path fill="currentColor" fill-rule="evenodd" d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4S4 12.954 4 24s8.954 20 20 20Zm10.742-26.33a1 1 0 1 0-1.483-1.34L21.28 29.567l-6.59-6.291a1 1 0 0 0-1.382 1.446l7.334 7l.743.71l.689-.762l12.667-14Z" clip-rule="evenodd"/>
+                             </svg>
+                        </div>';
+                        }
+                     elseif(((isset($this->displayedData["get_statut"]["actifOuNon"]) && $this->displayedData["get_statut"]["actifOuNon"]=='Inactif')||(isset($_POST['toggle_statut']) && $this->displayedData['toggle_statut']["actifOuNon"]=='Inactif' ))){
+                        echo'<div class="col p-1 alert alert-danger text-center" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 36 36"><path fill="#BE1931" d="M36 18c0 9.941-8.059 18-18 18S0 27.941 0 18S8.059 0 18 0s18 8.059 18 18z"/><path fill="#FFF" d="M32 20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h24a2 2 0 0 1 2 2v4z"/>
+                        </svg>       
+                    </div>';
+                     } ?>
+
+               
+                <div class="col"></div>
+                </div>
+        
+            </div>
+        </div>
+    </div>
 
 
 
-
+<div class="row">
         <div class="col"></div>
         <div class="col"></div>
         <div class="col d-flex justify-content-end">
