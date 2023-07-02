@@ -98,7 +98,7 @@
                                             <select class="form-select" id="refChauffeur" name="refChauffeur" >
                                                         <option selected>Choose...</option>
                                                 <?php foreach ($this->displayedData["listeChauffeur"] as $row) : ?>                             
-                                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo $row['prenom_Chauffeur']; ?></option>                                                       
+                                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo "  " ; echo $row['prenom_Chauffeur']; ?></option>                                                                                                            
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
@@ -202,7 +202,7 @@
                         <select class="mb-1 form-select btn btn-outline-secondary" id="refChauffeur" name="refChauffeur" >
                                                         <option selected>Selectionner Chauffeur</option>
                                                 <?php foreach ($this->displayedData["listeChauffeur"] as $row) : ?>                             
-                                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo $row['prenom_Chauffeur']; ?></option>                                                       
+                                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo "  " ; echo $row['prenom_Chauffeur']; ?></option>                                                       
                                                 <?php endforeach; ?>
                         </select>
                        
@@ -290,7 +290,7 @@
                                             <select class="form-select" id="refChauffeur" name="refChauffeur" >
                                                         <option selected>Choose...</option>
                                                 <?php foreach ($this->displayedData["listeChauffeur"] as $row) : ?>                             
-                                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo $row['prenom_Chauffeur']; ?></option>                                                       
+                                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo "  " ; echo $row['prenom_Chauffeur']; ?></option>                                                       
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
@@ -344,7 +344,7 @@
                     <select class="mb-1 form-select btn btn-outline-secondary" id="refChauffeur" name="refChauffeur" >
                             <option selected>Selectionner Chauffeur</option>
                                 <?php foreach ($this->displayedData["listeChauffeur"] as $row) : ?>                             
-                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo $row['prenom_Chauffeur']; ?></option>                                                       
+                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo "  " ; echo $row['prenom_Chauffeur']; ?></option>                                                       
                                 <?php endforeach; ?>
                         </select>
                         <div class="row d-flex justify-content-center" >
@@ -605,7 +605,7 @@
            <div class="modal-dialog modal-sm">
                <div class="modal-content">
                    <div class="modal-header">
-                       <h5 class="modal-title" id="catssevalLabel">Catégories Evaluations</h5>
+                       <h5 class="modal-title" id="catssevalLabel">Sous Catégories Evaluations</h5>
                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                    </div>
                    <div class="modal-body">                      
@@ -657,7 +657,7 @@
            <div class="modal-dialog modal-sm">
                <div class="modal-content">
                    <div class="modal-header">
-                       <h5 class="modal-title" id="catpermisLabel">Catégories Evaluations</h5>
+                       <h5 class="modal-title" id="catpermisLabel">Catégories Permis</h5>
                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                    </div>
                    <div class="modal-body">                      
@@ -703,7 +703,7 @@
            <div class="modal-dialog modal-sm">
                <div class="modal-content">
                    <div class="modal-header">
-                       <h5 class="modal-title" id="titlbackupLabel">Catégories Evaluations</h5>
+                       <h5 class="modal-title" id="titlbackupLabel">Titulaires ou BackUp</h5>
                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                    </div>
                    <div class="modal-body">                      
@@ -773,7 +773,7 @@
                     <select class="mb-1 form-select btn btn-outline-secondary" id="refChauffeur" name="refChauffeur" >
                             <option selected>Selectionner Chauffeur</option>
                                 <?php foreach ($this->displayedData["listeChauffeur"] as $row) : ?>                             
-                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo $row['prenom_Chauffeur']; ?></option>                                                       
+                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo "  " ; echo $row['prenom_Chauffeur']; ?></option>                                                       
                                 <?php endforeach; ?>
                         </select>
                    
@@ -1244,7 +1244,7 @@
                         <select class="form-select" id="statut" name="refChauf">
                             <option selected>Choisir Chauffeur...</option>
                             <?php foreach ($this->displayedData["listeChauffeur"] as $row) : ?>                             
-                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo $row['prenom_Chauffeur']; ?></option>                                                       
+                                    <option value="<?php echo $row['ref_Chauffeur']; ?>"><?php echo $row['nom_Chauffeur']; echo "  " ; echo $row['prenom_Chauffeur']; ?></option>                                                       
                             <?php endforeach; ?>
                         </select>
                         <button type="submit" name = "get_statut" class="border-0 btn-secondary">Statut</button>
