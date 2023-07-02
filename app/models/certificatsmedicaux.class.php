@@ -55,6 +55,22 @@ class Certificatsmedicaux {
     }
 
 
+    public function get_Last_Certificat($post){
+        //-- Instanciation de la BD,
+        $db=Database::getDbInstance();
+
+        $refChauf = trim($post['refChauffeur']);
+
+        $sql="SELECT Ref_Certificat_Medical,Date_Certificat_Medical,Date_Echéance_Certificat_Medical,nom_Chauffeur,prenom_Chauffeur,certificatsmedicauxtests.Ref_Chauffeur FROM certificatsmedicauxtests JOIN chauffeurstests on chauffeurstests.ref_Chauffeur = certificatsmedicauxtests.Ref_Chauffeur WHERE certificatsmedicauxtests.Ref_Chauffeur=$refChauf ORDER BY Ref_Certificat_Medical DESC"; 
+        $result=$db->read($sql);
+               
+        return  $result[0];
+        
+    }
+
+   
+
+
 
 
 

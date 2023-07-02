@@ -20,7 +20,8 @@ class OperationsChauffeurs extends Controller{
          $decisionCatevaluation = $this->load_model("DecisionEvaluation"); //Attention, le parametre a provider ici doit etre entre quote (cest un string ) et doit commencer par une majuscule
          $catPermis = $this->load_model("CatePermis"); //Attention, le parametre a provider ici doit etre entre quote (cest un string ) et doit commencer par une majuscule
          $titbackup = $this->load_model("TitulBackup"); //Attention, le parametre a provider ici doit etre entre quote (cest un string ) et doit commencer par une majuscule
-
+         $typecontrat = $this->load_model("TypeContrat"); //Attention, le parametre a provider ici doit etre entre quote (cest un string ) et doit commencer par une majuscule
+         
          $listeChauffeurs=$driver->get_Drivers_details();
          $this->displayedData["listeChauffeur"]=$listeChauffeurs; //Age moyen : Index 0 du displayData
 
@@ -44,6 +45,8 @@ class OperationsChauffeurs extends Controller{
          $this->displayedData["listeTitulBackUp"]=$listetitBackup; //Age moyen : Index 5 du displayData
 
 
+         $listeTypeContrats=$typecontrat->get_All_Contrats_Types();
+         $this->displayedData["listeTypesContrats"]=$listeTypeContrats; //Age moyen : Index 5 du displayData
 
 
 
@@ -57,6 +60,10 @@ class OperationsChauffeurs extends Controller{
           //1.1- Execution de la fonction register de la classe Driver
           $add_chauffeur=$driver->add_Driver($_POST);
           $this->displayedData["ajout_nouveau_chauffeur"]=$add_chauffeur; //Age moyen : Index 6 du displayData
+
+          $listeChauffeurs=$driver->get_Drivers_details();
+          $this->displayedData["listeChauffeur"]=$listeChauffeurs; //Age moyen : Index 0 du displayData
+         
     
       }
 
@@ -66,6 +73,9 @@ class OperationsChauffeurs extends Controller{
         //1.1- Execution de la fonction register de la classe Driver
         $add_certificat=$certificat->add_Visite($_POST);
         $this->displayedData["ajout_nouveau_certificat"]=$add_certificat; //Age moyen : Index 6 du displayData
+
+        $listeChauffeurs=$driver->get_Drivers_details();
+        $this->displayedData["listeChauffeur"]=$listeChauffeurs; //Age moyen : Index 0 du displayData
     }
 
 
@@ -74,6 +84,9 @@ class OperationsChauffeurs extends Controller{
       //1.1- Execution de la fonction register de la classe Driver
       $add_evaluation=$evaluation->add_Evaluation($_POST);
       $this->displayedData["ajout_nouvel_evaluation"]=$add_evaluation; //Age moyen : Index 6 du displayData
+
+      $listeChauffeurs=$driver->get_Drivers_details();
+      $this->displayedData["listeChauffeur"]=$listeChauffeurs; //Age moyen : Index 0 du displayData
   }
 
 
@@ -93,12 +106,58 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["toggle_statut"])){
   if($_POST["refChauf"] !="Choisir Chauffeur..."){
     $statut=$driver->toggle_Driver_Statut($_POST);
   $this->displayedData["toggle_statut"]=$statut; //Age moyen : Index 7 du displayData
+
+  $listeChauffeurs=$driver->get_Drivers_details();
+  $this->displayedData["listeChauffeur"]=$listeChauffeurs; //Age moyen : Index 0 du displayData
   }
-  
-  
-   
-   
+    
 }
+
+
+if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["selection_Formation"])){
+
+  //1.1- Execution de la fonction register de la classe Driver
+  if($_POST["refChauffeur"] !="Selectionner Chauffeur"){
+
+    $selectionFormation=$evaluation->get_Last_Training($_POST);
+    $this->displayedData["selection_Consultation_Formation"]=$selectionFormation; 
+
+
+
+  }
+    
+}
+
+
+if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["selection_Aptitude"])){
+
+  //1.1- Execution de la fonction register de la classe Driver
+  if($_POST["refChauffeur"] !="Selectionner Chauffeur"){
+
+   
+
+    $selectionFormation=$certificat->get_Last_Certificat($_POST);
+    $this->displayedData["selection_Consultation_Aptitude"]=$selectionFormation; 
+
+
+  }
+    
+}
+
+
+if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["selection_Carte"])){
+
+  //1.1- Execution de la fonction register de la classe Driver
+  if($_POST["refChauffeur"] !="Selectionner Chauffeur"){
+
+    $selectionChauffeur=$driver->get_Identity_Card($_POST);
+    $this->displayedData["selection_Consultation_Chauffeur"]=$selectionChauffeur; 
+
+
+  }
+    
+}
+
 
 
 

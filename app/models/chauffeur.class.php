@@ -143,8 +143,8 @@ class Chauffeur {
         $db=Database::getDbInstance();
 
         //  -- Select all the users that are not approved yet
-        $query="SELECT chauffeurstests.ref_Chauffeur, code_Chauffeur, numero_Matricule_Chauffeur, nom_Chauffeur, prenom_Chauffeur, `date_de_naissance_Chauffeur`, `categorie_Permis_Permis`, `numero_Permis_Chauffeur`, numero_Telephone_Chauffeur, `camion_associe`, `actifOuNon`, MAX(Date_Echéance_Certificat_Medical) AS echeanceVisite, MAX(Date_Echéance_Evaluation_Chauffeur) AS echeanceFormation, TIMESTAMPDIFF(YEAR, date_de_naissance_Chauffeur, CURDATE()) AS age, TIMESTAMPDIFF(YEAR, date_Obtention_Permis_Chauffeur, CURDATE()) AS experience FROM chauffeurstests JOIN certificatsmedicauxtests ON chauffeurstests.ref_Chauffeur=certificatsmedicauxtests.Ref_Chauffeur JOIN evaluationschauffeurstests ON chauffeurstests.ref_Chauffeur=evaluationschauffeurstests.Ref_Chauffeur GROUP BY chauffeurstests.ref_Chauffeur ORDER BY nom_Chauffeur ASC";
-        
+  //      $query="SELECT chauffeurstests.ref_Chauffeur, code_Chauffeur, numero_Matricule_Chauffeur, nom_Chauffeur, prenom_Chauffeur, `date_de_naissance_Chauffeur`, `categorie_Permis_Permis`, `numero_Permis_Chauffeur`, numero_Telephone_Chauffeur, `camion_associe`, `actifOuNon`,MAX(Date_Echéance_Certificat_Medical) AS echeanceVisite, MAX(Date_Echéance_Evaluation_Chauffeur) AS echeanceFormation, TIMESTAMPDIFF(YEAR, date_de_naissance_Chauffeur, CURDATE()) AS age, TIMESTAMPDIFF(YEAR, date_Obtention_Permis_Chauffeur, CURDATE()) AS experience FROM chauffeurstests JOIN certificatsmedicauxtests ON chauffeurstests.ref_Chauffeur=certificatsmedicauxtests.Ref_Chauffeur JOIN evaluationschauffeurstests ON chauffeurstests.ref_Chauffeur=evaluationschauffeurstests.Ref_Chauffeur GROUP BY chauffeurstests.ref_Chauffeur ORDER BY nom_Chauffeur ASC";
+        $query="SELECT chauffeurstests.ref_Chauffeur, code_Chauffeur, numero_Matricule_Chauffeur, nom_Chauffeur, prenom_Chauffeur, `date_de_naissance_Chauffeur`, `categorie_Permis_Permis`, `numero_Permis_Chauffeur`, numero_Telephone_Chauffeur, `camion_associe`, `actifOuNon`,TIMESTAMPDIFF(YEAR, date_de_naissance_Chauffeur, CURDATE()) AS age, TIMESTAMPDIFF(YEAR, date_Obtention_Permis_Chauffeur, CURDATE()) AS experience FROM chauffeurstests GROUP BY chauffeurstests.ref_Chauffeur ORDER BY nom_Chauffeur ASC";
         $result=$db->read($query);
         return  $result;
         
@@ -291,6 +291,21 @@ class Chauffeur {
  
          }
 
+    }
+
+
+
+    public function get_Identity_Card($post){
+        //-- Instanciation de la BD,
+        $db=Database::getDbInstance();
+
+        $refChauf = trim($post['refChauffeur']);
+
+        $sql="SELECT ref_Chauffeur,numero_Matricule_Chauffeur,nom_Chauffeur,prenom_Chauffeur,date_de_naissance_Chauffeur,numero_Permis_Chauffeur,date_Obtention_Permis_Chauffeur,categorie_Permis_Permis,date_Recrutement_Chauffeur,date_dIntegration_Chauffeur,type_Contrat_Chauffeur,numero_Telephone_Chauffeur,titulaire_backup,camion_associe,actifOuNon,round(DATEDIFF(CURDATE(), date_de_naissance_Chauffeur) / 365.25,0) AS age,Code_Cat_Permis,Designation_Cat_Permis,Designation_TitulaireBackUp,Code_Type_Contrat_Chauffeur FROM chauffeurstests JOIN categoriespermis on categoriespermis.Ref_Cat_Permis= chauffeurstests.categorie_Permis_Permis JOIN titulairebackup on titulairebackup.Ref_TitulaireBackUp=chauffeurstests.titulaire_backup JOIN typescontratschauffeurs on typescontratschauffeurs.Ref_Type_Contrat_Chauffeur=chauffeurstests.type_Contrat_Chauffeur WHERE ref_Chauffeur=$refChauf ORDER BY ref_Chauffeur DESC"; 
+        $result=$db->read($sql);
+               
+        return  $result[0];
+        
     }
 
 

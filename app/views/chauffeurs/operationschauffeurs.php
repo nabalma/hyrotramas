@@ -175,7 +175,7 @@
 
                            <div class="modal-footer">
                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                               <button  type="submit" name="submit_nouvel_evaluation" class="btn btn-outline-primary">Créer Visite Médicale</button>
+                               <button  type="submit" name="submit_nouvel_evaluation" class="btn btn-outline-primary">Créer Evaluation</button>
                            </div>
 
                        </form>
@@ -197,7 +197,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><path fill="#36028C" d="m15.504 13.616l-3.79-3.223c-.392-.353-.811-.514-1.149-.499a6 6 0 1 0-.672.672c-.016.338.146.757.499 1.149l3.223 3.79c.552.613 1.453.665 2.003.115s.498-1.452-.115-2.003zM6 10a4 4 0 1 1 0-8a4 4 0 0 1 0 8z"/></svg>
                         Selectionner une Formation
                     </div>
-                    <form class="">                       
+                    <form method="post">                       
                            
                         <select class="mb-1 form-select btn btn-outline-secondary" id="refChauffeur" name="refChauffeur" >
                                                         <option selected>Selectionner Chauffeur</option>
@@ -207,7 +207,11 @@
                         </select>
                        
                         <div class="row d-flex justify-content-center" >
-                        <div style="width:18rem"><button class="w-100 btn btn-outline-primary">Consulter</button></div>                           
+                        <div style="width:18rem">
+                        <button type = "sumbit"  name ="selection_Formation" class="w-100 btn btn-outline-primary">
+                            Consulter
+                        </button>
+                    </div>                           
                         </div>
                     </form>
                 </li>
@@ -335,7 +339,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><path fill="#36028C" d="m15.504 13.616l-3.79-3.223c-.392-.353-.811-.514-1.149-.499a6 6 0 1 0-.672.672c-.016.338.146.757.499 1.149l3.223 3.79c.552.613 1.453.665 2.003.115s.498-1.452-.115-2.003zM6 10a4 4 0 1 1 0-8a4 4 0 0 1 0 8z"/></svg>
                         Selectionner une Aptitude
                     </div>
-                    <form class="">                       
+                    <form class="" method="post">                       
                        
                     <select class="mb-1 form-select btn btn-outline-secondary" id="refChauffeur" name="refChauffeur" >
                             <option selected>Selectionner Chauffeur</option>
@@ -344,7 +348,11 @@
                                 <?php endforeach; ?>
                         </select>
                         <div class="row d-flex justify-content-center" >
-                        <div style="width:18rem"><button class="w-100 btn btn-outline-primary">Consulter</button></div>                           
+                        <div style="width:18rem">
+                        <button type = "sumbit"  name ="selection_Aptitude" class="w-100 btn btn-outline-primary">
+                            Consulter
+                        </button>
+                    </div>                           
                         </div>
                     </form>
                 </li>
@@ -456,9 +464,17 @@
                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Date Obtent.</span>
                                        <input id="dateObtentionPermis" name="dateObtentionPermis" type="date" class="form-control" placeholder="Prénom" aria-label="Date Obtention" aria-describedby="basic-addon1">
                                    </div>
+
                                    <div class="col input-group">
                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Cat. Permis</span>
-                                       <input id="categoriePermis" name="categoriePermis" type="text" class="form-control" placeholder="Categorie Permis" aria-label="Categorie Permis" aria-describedby="basic-addon1">
+                                       
+                                       <select class="form-select" id="categoriePermis" name="categoriePermis" >
+                                        <option selected>Selectionner</option>
+                                            <?php foreach ($this->displayedData["listeCatPermis"] as $row) : ?>                             
+                                                <option value="<?php echo $row['Ref_Cat_Permis']; ?>"><?php echo $row['Designation_Cat_Permis']; ?></option>                                                       
+                                            <?php endforeach; ?>
+                                        </select>
+
                                    </div>
                                </div>
                    
@@ -476,7 +492,14 @@
                                <div class="gx-0 row">  
                                    <div class="col input-group">
                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Contrat</span>
-                                       <input id="typeContrat" name="typeContrat" type="text" class="form-control" placeholder="Contrat" aria-label="Username" aria-describedby="basic-addon1">
+
+                                       <select class="form-select" id="typeContrat" name="typeContrat" >
+                                        <option selected>Selectionner</option>
+                                            <?php foreach ($this->displayedData["listeTypesContrats"] as $row) : ?>                             
+                                                <option value="<?php echo $row['Ref_Type_Contrat_Chauffeur']; ?>"><?php echo $row['Code_Type_Contrat_Chauffeur']; ?></option>                                                       
+                                            <?php endforeach; ?>
+                                        </select>
+
                                    </div>
                                    <div class="col input-group">
                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Telephone</span>
@@ -486,8 +509,14 @@
                    
                                <div class="gx-0 row">  
                                    <div class="col input-group">
-                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Contrat</span>
-                                       <input id="titulaireBackup" name="titulaireBackup" type="text" class="form-control" placeholder="titulaire ou Backup" aria-label="Username" aria-describedby="basic-addon1">
+                                       <span class="input-group-text" id="basic-addon1" style="width:6rem">Tit BackUp</span>
+                                      
+                                       <select class="form-select" id="titulaireBackup" name="titulaireBackup" >
+                                        <option selected>Selectionner</option>
+                                            <?php foreach ($this->displayedData["listeTitulBackUp"] as $row) : ?>                             
+                                                <option value="<?php echo $row['Ref_TitulaireBackUp']; ?>"><?php echo $row['Designation_TitulaireBackUp']; ?></option>                                                       
+                                            <?php endforeach; ?>
+                                        </select>
                                    </div>
                                    <div class="col input-group">
                                        <span class="input-group-text" id="basic-addon1" style="width:6rem">Camion</span>
@@ -739,7 +768,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><path fill="#36028C" d="m15.504 13.616l-3.79-3.223c-.392-.353-.811-.514-1.149-.499a6 6 0 1 0-.672.672c-.016.338.146.757.499 1.149l3.223 3.79c.552.613 1.453.665 2.003.115s.498-1.452-.115-2.003zM6 10a4 4 0 1 1 0-8a4 4 0 0 1 0 8z"/></svg>
                         Selectionner une Carte
                     </div>
-                    <form class="">                       
+                    <form class="" method="post">                       
                   
                     <select class="mb-1 form-select btn btn-outline-secondary" id="refChauffeur" name="refChauffeur" >
                             <option selected>Selectionner Chauffeur</option>
@@ -749,7 +778,11 @@
                         </select>
                    
                         <div class="row d-flex justify-content-center" >
-                        <div style="width:18rem"><button class="w-100 btn btn-outline-primary">Consulter</button></div>                           
+                        <div style="width:18rem">
+                        <button type = "sumbit"  name ="selection_Carte" class="w-100 btn btn-outline-primary">
+                            Consulter
+                        </button>
+                    </div>                           
                         </div>
                     </form>
                 </li>
@@ -759,18 +792,311 @@
 
         </div>
 
-
-
-
     </div>
 
+<!-- Consultation individuelle --->
+
+<!-- 1- Formation individuelle --->
+
+<?php if (isset($_POST["selection_Formation"]) && $_POST["refChauffeur"]!="Selectionner Chauffeur") : ?>
+    <div class="mx-auto row card p-1 border border-1 shadow-lg p-2 mb-5 bg-body rounded" style="width:40rem">
+    <div class="mx-auto row card border border-1 shadow-lg p-2 bg-body mb-1 rounded fw-bold fs-6" style="width:40rem">Affichage Formation Individuelle</div>
+
+<div class="row gx-0 mb-1">           
+    <div class="col">
+        <div class="input-group">
+             <span class="input-group-text" id="basic-addon1" style="width:6rem">Num. Doc</span>
+             <input id="numdoc" name="numdoc" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->displayedData["selection_Consultation_Formation"]["Num_Doc_dEvaluation"] ?>" disabled>                                              
+        </div>
+    </div>
+    <div class="col">
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1" style="width:6rem">Ref.</span>
+            <input id="reference" name="reference" type="text" class="form-control" placeholder="Reference" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->displayedData["selection_Consultation_Formation"]["Ref_Evaluation_Chauffeur"] ?>" disabled>
+        </div>
+    </div>
+</div>
+                   
+ <div class="gx-0 row mb-1">  
+    <div class="col input-group">
+   
+         <div class="input-group">
+             <label class="input-group-text" for="refChauffeur">Chauffeur</label>
+             <select class="form-select" id="refChauffeur" name="refChauffeur" disabled>
+                                                
+                     <option selected value="<?php echo $this->displayedData["selection_Consultation_Formation"]["Ref_Chauffeur"] ?>"><?php echo $this->displayedData["selection_Consultation_Formation"]["nom_Chauffeur"]; echo $this->displayedData["selection_Consultation_Formation"]["prenom_Chauffeur"]; ?></option>                                                                                                             
+               
+             </select>
+         </div>
+    </div>
+   
+</div>
+
+<div class="gx-0 row mb-1">  
+    <div class="col input-group">
+        <span class="input-group-text" id="basic-addon1" style="width:6rem">Date     </span>
+        <input id="dateEvaluation" name="dateEvaluation" type="date" class="form-control" placeholder="Date " aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->displayedData["selection_Consultation_Formation"]["Date_Evaluation_Chauffeur"] ?>" disabled>
+    </div>
+    <div class="col input-group">
+        <span class="input-group-text" id="basic-addon2" style="width:6rem">Echéance</span>
+        <input id="dateEcheanceEvaluation" name="dateEcheanceEvaluation" type="date" class="form-control" placeholder="Echéance" aria-label="Date Obtention" aria-describedby="basic-addon2" value="<?php echo $this->displayedData["selection_Consultation_Formation"]["Date_Echéance_Evaluation_Chauffeur"] ?>" disabled>
+    </div>
+</div>
+
+
+<div class="gx-0 row mb-1">  
+    <div class="col input-group">
+        <span class="input-group-text" id="basic-addon1" style="width:6rem">Catégorie     </span>
+
+        <select class="form-select" id="categorieEvaluation" name="categorieEvaluation" disabled>
+                                                                
+                         <option selected value="<?php echo $this->displayedData["selection_Consultation_Formation"]["Ref_Cat_Evaluation_Chauffeur"] ?>"><?php echo $this->displayedData["selection_Consultation_Formation"]["Designation_Cat_Evaluation_Chauffeur"] ?></option>                                                                                                             
+                
+         </select>
+    </div>
+    <div class="col input-group">
+        <span class="input-group-text" id="basic-addon2" style="width:6rem">Sous Catégorie</span>
+       
+        <select class="form-select" id="sousCategorieEvaluation" name="sousCategorieEvaluation" disabled>
+                       
+                                       
+        <option selected value="<?php echo $this->displayedData["selection_Consultation_Formation"]["Sous_Categorie_Evaluation_Chauffeur"] ?>"><?php echo $this->displayedData["selection_Consultation_Formation"]["Designation_Sous_Cat_Eval_Chauffeur"]; ?></option>                                                                                                             
+                
+         </select>
+    </div>
+</div>  
+
+
+<div class="gx-0 row mb-1">  
+    <div class="col input-group">
+        <span class="input-group-text" id="basic-addon1" style="width:6rem">Note  (%)   </span>
+        <input id="noteEvaluation" name="noteEvaluation" type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->displayedData["selection_Consultation_Formation"]["Note_Evaluation_Chauffeur"] ?>" disabled>
+    </div>
+    <div class="col input-group">
+        <span class="input-group-text" id="basic-addon2" style="width:6rem">Décision</span>
+       
+        <select class="form-select" id="decisionEvaluation" name="decisionEvaluation" disabled>
+                                                                
+        <option selected value="<?php echo $this->displayedData["selection_Consultation_Formation"]["Ref_Decision_Evaluation"] ?>"><?php echo $this->displayedData["selection_Consultation_Formation"]["Designation_Decision_Evaluation"]; ?></option>  
+                
+         </select>
+        
+    </div>
+</div> 
+
+<div class="gx-0 row mb-1">  
+    <div class="col input-group">
+         <div class="input-group">
+         <label class="input-group-text" for="commentairesEvaluation">Commentaires</label>
+             <input id="commentairesEvaluation" name="commentairesEvaluation" type="text" class="form-control" aria-label="Date Obtention" aria-describedby="basic-addon2" value="<?php echo $this->displayedData["selection_Consultation_Formation"]["Commentaires_Evaluation_Chauffeur"] ?>" disabled>                                         
+         </div>
+    </div>
+   
+</div>
+
+
+</div>  <!-- 1- Fin Formation individuelle --->
+<?php endif; ?>
+
+<?php if (isset($_POST["selection_Aptitude"]) && $_POST["refChauffeur"]!="Selectionner Chauffeur") : ?>
+ <!-- 2- Aptitude individuelle --->
+ <div class="mx-auto row card p-1 border border-1 shadow-lg p-2 mb-5 bg-body rounded" style="width:40rem">
+ <div class="mx-auto row card border border-1 shadow-lg p-2 bg-body mb-1 rounded fw-bold fs-6" style="width:40rem">Affichage Aptitude Individuelle</div>
+
+<div class="row gx-0 mb-1">           
+    <div class="col">
+        <div class="input-group">
+                
+        </div>
+    </div>
+    <div class="col">
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1" style="width:6rem">Ref.</span>
+            <input id="reference" name="reference" type="text" class="form-control" placeholder="Reference" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->displayedData["selection_Consultation_Aptitude"]["Ref_Certificat_Medical"] ?>" disabled>
+        </div>
+    </div>
+</div>
+                   
+ <div class="gx-0 row mb-1">  
+    <div class="col input-group">
+   
+         <div class="input-group">
+             <label class="input-group-text" for="refChauffeur">Choisir Chauffeur</label>
+             <select class="form-select" id="refChauffeur" name="refChauffeur" >
+                                                    
+                    <option selected value="<?php echo $this->displayedData["selection_Consultation_Aptitude"]["Ref_Chauffeur"] ?>"><?php echo $this->displayedData["selection_Consultation_Aptitude"]["nom_Chauffeur"]; echo $this->displayedData["selection_Consultation_Aptitude"]["prenom_Chauffeur"]; ?></option> 
+               
+             </select>
+         </div>
+    </div>
+   
+</div>
+
+<div class="gx-0 row mb-1">  
+    <div class="col input-group">
+        <span class="input-group-text" id="basic-addon1" style="width:6rem">Date     </span>
+        <input id="dateCertificat" name="dateCertificat" type="date" class="form-control" placeholder="Date de naissance" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->displayedData["selection_Consultation_Aptitude"]["Date_Certificat_Medical"] ?>" disabled>
+    </div>
+    <div class="col input-group">
+        <span class="input-group-text" id="basic-addon2" style="width:6rem">Echéance</span>
+        <input id="dateEcheanceCertificat" name="dateEcheanceCertificat" type="date" class="form-control" placeholder="Prénom" aria-label="Date Obtention" aria-describedby="basic-addon2" value="<?php echo $this->displayedData["selection_Consultation_Aptitude"]["Date_Echéance_Certificat_Medical"] ?>" disabled>
+    </div>
+</div>                          
+
+
+</div> <!-- 2- Fin Aptitude individuelle --->
+<?php endif; ?>
+
+
+<!-- 3- Carte didentité individuelle --->
+<?php if (isset($_POST["selection_Carte"]) && $_POST["refChauffeur"]!="Selectionner Chauffeur") : ?>
+<div class="mx-auto row card p-1 border border-1 shadow-lg p-2 mb-5 bg-body rounded" style="width:40rem">
+<div class="mx-auto row card border border-1 shadow-lg p-2 bg-body mb-1 rounded fw-bold fs-6" style="width:40rem">Affichage Carte Individuelle</div>
+
+<fieldset>
+    <legend class="fw-bold fs-6">Informations Personnelles</legend>
+<div class="row gx-0 mb-1">           
+    <div class="col">
+        <div class="input-group">  
+             <span class="input-group-text" id="basic-addon1" style="width:6rem">Ref.</span>
+            <input id="reference" name="reference" type="text" class="form-control" placeholder="Reference" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["ref_Chauffeur"] ?>" disabled>                                              
+        </div>
+    </div>
+    <div class="col">
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1" style="width:6rem">Matricule</span>
+             <input id="numdoc" name="numdoc" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["numero_Matricule_Chauffeur"] ?>" disabled>
+        </div>
+    </div>
+</div>
+                   
+ <div class="gx-0 row mb-1">  
+    <div class="col input-group">
+   
+         <div class="input-group">
+             <label class="input-group-text" for="refChauffeur">Chauffeur</label>
+             <select class="form-select" id="refChauffeur" name="refChauffeur" disabled>
+                                                
+                     <option selected value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["ref_Chauffeur"] ?>"><?php echo $this->displayedData["selection_Consultation_Chauffeur"]["nom_Chauffeur"]; echo $this->displayedData["selection_Consultation_Chauffeur"]["prenom_Chauffeur"]; ?></option>                                                                                                             
+               
+             </select>
+         </div>
+    </div>
+   
+</div>
+
+<div class="gx-0 row mb-1">  
+    <div class="col input-group">
+        <span class="input-group-text" id="basic-addon1" style="width:6rem">Date Naiss    </span>
+        <input id="dateEvaluation" name="dateEvaluation" type="date" class="form-control" placeholder="Date " aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["date_de_naissance_Chauffeur"] ?>" disabled>
+    </div>
+    <div class="col input-group">
+        <span class="input-group-text" id="basic-addon2" style="width:6rem">Recrutement</span>
+        <input id="dateEcheanceEvaluation" name="dateEcheanceEvaluation" type="date" class="form-control" placeholder="Echéance" aria-label="Date Obtention" aria-describedby="basic-addon2" value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["date_Recrutement_Chauffeur"] ?>" disabled>
+    </div>
+</div>
+
+
+<div class="gx-0 row mb-1">  
+    <div class="col input-group">
+        <span class="input-group-text" id="basic-addon2" style="width:6rem">Integration</span>
+        <input id="dateEcheanceEvaluation" name="dateEcheanceEvaluation" type="date" class="form-control" placeholder="Echéance" aria-label="Date Obtention" aria-describedby="basic-addon2" value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["date_dIntegration_Chauffeur"] ?>" disabled>
+    </div>
+
+    <div class="col input-group">
+    <span class="input-group-text" id="basic-addon2" style="width:6rem">Age</span>
+        <input id="dateEcheanceEvaluation" name="dateEcheanceEvaluation" type="text" class="form-control" placeholder="Echéance" aria-label="Date Obtention" aria-describedby="basic-addon2" value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["age"] ?>" disabled>       
+        
+    </div>
+     
+</div>
+
+<div class="gx-0 row mb-1"> 
+<div class="col input-group">
+         <div class="input-group">
+         <label class="input-group-text" for="commentairesEvaluation">Telephone</label>
+             <input id="commentairesEvaluation" name="commentairesEvaluation" type="text" class="form-control" aria-label="Date Obtention" aria-describedby="basic-addon2" value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["numero_Telephone_Chauffeur"] ?>" disabled>                                         
+         </div>
+    </div>
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend class="fw-bold fs-6">Informations du Permis</legend>
+<div class="gx-0 row mb-1">  
+    <div class="col input-group">
+        <span class="input-group-text" id="basic-addon2" style="width:6rem">Permis</span>
+        <input id="dateEcheanceEvaluation" name="dateEcheanceEvaluation" type="text" class="form-control" placeholder="Echéance" aria-label="Date Obtention" aria-describedby="basic-addon2" value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["numero_Permis_Chauffeur"] ?>" disabled>       
+    </div>   
+
+<div class="col input-group">
+        <span class="input-group-text" id="basic-addon2" style="width:6rem">Code Permis</span>
+        <input id="dateEcheanceEvaluation" name="dateEcheanceEvaluation" type="text" class="form-control" placeholder="Echéance" aria-label="Date Obtention" aria-describedby="basic-addon2" value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["Code_Cat_Permis"] ?>" disabled>
+    </div>
+
+    
+</div>  
+
+
+<div class="gx-0 row mb-1">  
+    <div class="col input-group">
+        <span class="input-group-text" id="basic-addon2" style="width:6rem">cat Permis</span>
+        <input id="dateEcheanceEvaluation" name="dateEcheanceEvaluation" type="text" class="form-control" placeholder="Echéance" aria-label="Date Obtention" aria-describedby="basic-addon2" value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["Designation_Cat_Permis"] ?>" disabled>       
+    </div>
+
+    <div class="col input-group">
+    <span class="input-group-text" id="basic-addon2" style="width:6rem">Obt. Permis</span>
+        <input id="dateEcheanceEvaluation" name="dateEcheanceEvaluation" type="date" class="form-control" placeholder="Echéance" aria-label="Date Obtention" aria-describedby="basic-addon2" value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["date_Obtention_Permis_Chauffeur"] ?>" disabled>       
+        
+    </div>  
+</div>
+</fieldset>
+
+
+<fieldset>
+    <legend class="fw-bold fs-6">Informations du Contrat</legend>
+<div class="gx-0 row mb-1">  
+    <div class="col input-group">
+        <span class="input-group-text" id="basic-addon2" style="width:6rem">Tit Backup</span>
+        <input id="dateEcheanceEvaluation" name="dateEcheanceEvaluation" type="text" class="form-control" placeholder="Echéance" aria-label="Date Obtention" aria-describedby="basic-addon2" value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["Designation_TitulaireBackUp"] ?>" disabled>
+    </div>
+
+    <div class="col input-group">
+    <span class="input-group-text" id="basic-addon2" style="width:6rem">Contrat</span>
+        <input id="dateEcheanceEvaluation" name="dateEcheanceEvaluation" type="text" class="form-control" placeholder="Echéance" aria-label="Date Obtention" aria-describedby="basic-addon2" value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["Code_Type_Contrat_Chauffeur"] ?>" disabled>       
+    </div>
+</div>  
+
+<div class="gx-0 row mb-1">  
+    <div class="col input-group">
+        <span class="input-group-text" id="basic-addon2" style="width:6rem">Camion</span>
+        <input id="dateEcheanceEvaluation" name="dateEcheanceEvaluation" type="text" class="form-control" placeholder="Echéance" aria-label="Date Obtention" aria-describedby="basic-addon2" value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["camion_associe"] ?>" disabled>
+    </div>
+
+    <div class="col input-group">
+    <span class="input-group-text" id="basic-addon2" style="width:6rem">Statut</span>
+        <input id="dateEcheanceEvaluation" name="dateEcheanceEvaluation" type="text" class="form-control" placeholder="Echéance" aria-label="Date Obtention" aria-describedby="basic-addon2" value="<?php echo $this->displayedData["selection_Consultation_Chauffeur"]["actifOuNon"] ?>" disabled>       
+    </div>
+</div>  
+
+
+</div>  <!-- 1- Fin Formation individuelle --->
+</fieldset>
+<?php endif; ?>
+
+<!-- 3- Fin Carte didentité individuelle --->
+
+
+<!-- Fin de Consultation individuelle --->
 
 
     <div class="row ms-1 me-1">  
         <div class="mx-auto card border border-1 shadow-lg p-2 mb-2 bg-body rounded" style="color:yellow">
-            
+        
         </div>  
     </div>
+
+
 
     <div class="row ms-5">
     <div class="col">
@@ -803,8 +1129,8 @@
                                                 <th scope="col">Date de Naissance</th>
                                                 <th scope="col">Numéro Permis</th>
                                                 <th scope="col">Téléphone</th>
-                                                <th scope="col">Echéance Evaluation</th>
-                                                <th scope="col">Echéance Medicale</th>
+                                                <th scope="col">Age</th>
+                                                <th scope="col">Experience</th>
                                                 <th scope="col">Actif ?</th>            
                                                 <th scope="col">Autres Détails</th>
                                                 </tr>
@@ -820,8 +1146,8 @@
                                                     <td><?php echo $row['date_de_naissance_Chauffeur']; ?></td>
                                                     <td><?php echo $row['numero_Permis_Chauffeur']; ?></td>
                                                     <td><?php echo $row['numero_Telephone_Chauffeur']; ?></td>
-                                                    <td><?php echo $row['echeanceVisite']; ?></td>
-                                                    <td><?php echo $row['echeanceFormation']; ?></td>
+                                                    <td><?php echo $row['age']; ?></td>
+                                                    <td><?php echo $row['experience']; ?></td>
                                                     <td><?php echo $row['actifOuNon']; ?></td>
                                                    
                                                     <td>
